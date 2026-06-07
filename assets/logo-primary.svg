@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 160" role="img" aria-labelledby="title desc">
+  <title id="title">シシノテ ロゴ</title>
+  <desc id="desc">獅子の手をモチーフにした店舗向けWeb制作サービスのロゴ。</desc>
+  <rect width="520" height="160" rx="32" fill="#F8FAFC"/>
+  <g transform="translate(24 24)">
+    <rect width="112" height="112" rx="28" fill="#111827"/>
+    <path d="M56 14c7 0 12 6 12 13 0 11-5 22-12 22S44 38 44 27c0-7 5-13 12-13Z" fill="#F7B733"/>
+    <path d="M31 28c6-3 13 1 16 7 4 10 2 21-4 23-6 3-14-4-18-14-3-7 0-14 6-16Z" fill="#F7B733"/>
+    <path d="M81 28c-6-3-13 1-16 7-4 10-2 21 4 23 6 3 14-4 18-14 3-7 0-14-6-16Z" fill="#F7B733"/>
+    <path d="M24 56c5-4 13-2 18 4 7 9 8 20 3 24s-15 0-22-9c-5-6-4-15 1-19Z" fill="#F7B733"/>
+    <path d="M88 56c-5-4-13-2-18 4-7 9-8 20-3 24s15 0 22-9c5-6 4-15-1-19Z" fill="#F7B733"/>
+    <path d="M56 49c18 0 33 16 33 32 0 15-11 21-33 21s-33-6-33-21c0-16 15-32 33-32Z" fill="#F7B733"/>
+  </g>
+  <text x="164" y="74" fill="#111827" font-size="42" font-weight="800" font-family="'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif">シシノテ</text>
+  <text x="166" y="112" fill="#256D5A" font-size="17" font-weight="700" font-family="'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif">AI × マーケティングで、店舗のWebを強くする。</text>
+</svg>
+
