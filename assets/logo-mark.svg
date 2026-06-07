@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Shishinote logo mark</title>
+  <desc id="desc">A lion-inspired paw mark with four claws and a strong central pad.</desc>
+  <rect width="160" height="160" rx="36" fill="#111827"/>
+  <path d="M80 20c9 0 17 8 17 18 0 16-8 31-17 31S63 54 63 38c0-10 8-18 17-18Z" fill="#F7B733"/>
+  <path d="M45 39c8-4 18 1 22 10 6 14 3 29-5 33-8 3-19-6-25-19-4-10 0-20 8-24Z" fill="#F7B733"/>
+  <path d="M115 39c-8-4-18 1-22 10-6 14-3 29 5 33 8 3 19-6 25-19 4-10 0-20-8-24Z" fill="#F7B733"/>
+  <path d="M35 78c7-6 18-3 25 5 10 12 12 27 5 33-7 6-20 0-30-12-7-8-7-20 0-26Z" fill="#F7B733"/>
+  <path d="M125 78c-7-6-18-3-25 5-10 12-12 27-5 33 7 6 20 0 30-12 7-8 7-20 0-26Z" fill="#F7B733"/>
+  <path d="M80 69c25 0 47 22 47 45 0 21-16 29-47 29s-47-8-47-29c0-23 22-45 47-45Z" fill="#F7B733"/>
+  <path d="M62 101c7-10 29-10 36 0 10 15 3 28-18 28s-28-13-18-28Z" fill="#111827" opacity=".22"/>
+  <path d="M52 21l5 19M108 21l-5 19M21 70l21 12M139 70l-21 12" stroke="#FEECC4" stroke-width="8" stroke-linecap="round"/>
+</svg>
+
