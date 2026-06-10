@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">クリニックサイトのファーストビュー例</title>
+  <desc id="desc">診療内容、予約ボタン、診療時間を整理したクリニックサイトのデモ画面</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7fbff"/>
+      <stop offset="1" stop-color="#dceee8"/>
+    </linearGradient>
+    <linearGradient id="photo" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#256d5a"/>
+      <stop offset="1" stop-color="#9fcabe"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" rx="36" fill="url(#bg)"/>
+  <rect x="58" y="50" width="1084" height="76" rx="24" fill="#ffffff" opacity=".94"/>
+  <circle cx="105" cy="88" r="20" fill="#256d5a"/>
+  <text x="138" y="97" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="26" font-weight="800" fill="#111827">青葉デンタルクリニック</text>
+  <text x="690" y="94" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="18" font-weight="700" fill="#4b5563">診療内容</text>
+  <text x="800" y="94" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="18" font-weight="700" fill="#4b5563">初診の方へ</text>
+  <text x="930" y="94" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="18" font-weight="700" fill="#4b5563">アクセス</text>
+  <rect x="1026" y="68" width="90" height="40" rx="20" fill="#f7b733"/>
+  <text x="1048" y="94" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="16" font-weight="800" fill="#111827">予約</text>
+
+  <g transform="translate(78 180)">
+    <rect x="0" y="0" width="168" height="38" rx="19" fill="#ddeee7"/>
+    <text x="21" y="26" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="16" font-weight="800" fill="#256d5a">初診予約受付中</text>
+    <text x="0" y="112" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="64" font-weight="900" fill="#111827">はじめての方が</text>
+    <text x="0" y="188" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="64" font-weight="900" fill="#111827">安心して通える歯科へ。</text>
+    <text x="0" y="246" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="24" font-weight="600" fill="#374151">診療内容、費用の目安、院長紹介、アクセスを</text>
+    <text x="0" y="286" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="24" font-weight="600" fill="#374151">予約前に確認しやすい構成に整理します。</text>
+    <rect x="0" y="332" width="190" height="56" rx="28" fill="#f7b733"/>
+    <text x="38" y="367" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="20" font-weight="900" fill="#111827">Web予約する</text>
+    <rect x="208" y="332" width="190" height="56" rx="28" fill="#ffffff" stroke="#d8dee8"/>
+    <text x="245" y="367" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="20" font-weight="900" fill="#111827">診療内容を見る</text>
+  </g>
+
+  <g transform="translate(720 178)">
+    <rect x="0" y="0" width="386" height="330" rx="42" fill="url(#photo)"/>
+    <circle cx="255" cy="112" r="86" fill="#ffffff" opacity=".26"/>
+    <rect x="62" y="218" width="250" height="34" rx="17" fill="#ffffff" opacity=".42"/>
+    <rect x="94" y="270" width="170" height="26" rx="13" fill="#ffffff" opacity=".32"/>
+  </g>
+  <g transform="translate(80 600)">
+    <rect width="316" height="96" rx="22" fill="#ffffff"/>
+    <text x="26" y="39" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="18" font-weight="800" fill="#256d5a">診療時間</text>
+    <text x="26" y="70" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="22" font-weight="900" fill="#111827">平日 9:00-18:30</text>
+  </g>
+  <g transform="translate(430 600)">
+    <rect width="316" height="96" rx="22" fill="#ffffff"/>
+    <text x="26" y="39" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="18" font-weight="800" fill="#256d5a">初診導線</text>
+    <text x="26" y="70" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="22" font-weight="900" fill="#111827">予約・持ち物・流れ</text>
+  </g>
+  <g transform="translate(780 600)">
+    <rect width="316" height="96" rx="22" fill="#ffffff"/>
+    <text x="26" y="39" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="18" font-weight="800" fill="#256d5a">安心材料</text>
+    <text x="26" y="70" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="22" font-weight="900" fill="#111827">院長紹介・FAQ</text>
+  </g>
+</svg>

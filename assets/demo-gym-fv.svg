@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">パーソナルジムLPのファーストビュー例</title>
+  <desc id="desc">体験予約、料金、トレーナー情報を整理したパーソナルジムLPのデモ画面</desc>
+  <defs>
+    <linearGradient id="gymBg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#256d5a"/>
+    </linearGradient>
+    <linearGradient id="gymPhoto" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7b733"/>
+      <stop offset="1" stop-color="#f26b4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" rx="36" fill="url(#gymBg)"/>
+  <rect x="60" y="50" width="1080" height="78" rx="24" fill="#ffffff" opacity=".1"/>
+  <text x="92" y="98" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="28" font-weight="900" fill="#ffffff">SHISHI PERSONAL GYM</text>
+  <text x="736" y="96" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="18" font-weight="700" fill="#d1d5db">料金</text>
+  <text x="824" y="96" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="18" font-weight="700" fill="#d1d5db">実績</text>
+  <text x="912" y="96" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="18" font-weight="700" fill="#d1d5db">トレーナー</text>
+  <rect x="1040" y="69" width="72" height="38" rx="19" fill="#f7b733"/>
+  <text x="1058" y="94" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="16" font-weight="900" fill="#111827">体験</text>
+
+  <g transform="translate(72 185)">
+    <rect width="210" height="38" rx="19" fill="#f7b733"/>
+    <text x="24" y="26" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="16" font-weight="900" fill="#111827">初回体験 3,000円</text>
+    <text x="0" y="118" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="68" font-weight="950" fill="#ffffff">続けられる理由が</text>
+    <text x="0" y="198" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="68" font-weight="950" fill="#ffffff">予約前にわかるLP。</text>
+    <text x="0" y="258" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="24" font-weight="700" fill="#d1d5db">料金、通いやすさ、トレーナー、実績を整理して</text>
+    <text x="0" y="298" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="24" font-weight="700" fill="#d1d5db">初回体験の不安を減らします。</text>
+    <rect x="0" y="348" width="188" height="58" rx="29" fill="#f7b733"/>
+    <text x="37" y="384" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="20" font-weight="900" fill="#111827">体験予約する</text>
+    <rect x="210" y="348" width="178" height="58" rx="29" fill="none" stroke="#ffffff" opacity=".8"/>
+    <text x="245" y="384" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="20" font-weight="900" fill="#ffffff">料金を見る</text>
+  </g>
+
+  <g transform="translate(742 178)">
+    <rect x="0" y="0" width="360" height="376" rx="48" fill="url(#gymPhoto)"/>
+    <circle cx="180" cy="128" r="92" fill="#111827" opacity=".18"/>
+    <rect x="70" y="258" width="220" height="36" rx="18" fill="#ffffff" opacity=".42"/>
+    <rect x="108" y="314" width="144" height="22" rx="11" fill="#ffffff" opacity=".32"/>
+  </g>
+  <g transform="translate(80 612)">
+    <rect width="320" height="88" rx="22" fill="#ffffff" opacity=".12"/>
+    <text x="26" y="39" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="18" font-weight="800" fill="#f7b733">月額目安</text>
+    <text x="26" y="69" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="24" font-weight="950" fill="#ffffff">29,800円〜</text>
+  </g>
+  <g transform="translate(440 612)">
+    <rect width="320" height="88" rx="22" fill="#ffffff" opacity=".12"/>
+    <text x="26" y="39" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="18" font-weight="800" fill="#f7b733">不安解消</text>
+    <text x="26" y="69" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="24" font-weight="950" fill="#ffffff">実績・FAQ・流れ</text>
+  </g>
+  <g transform="translate(800 612)">
+    <rect width="320" height="88" rx="22" fill="#ffffff" opacity=".12"/>
+    <text x="26" y="39" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="18" font-weight="800" fill="#f7b733">CTA</text>
+    <text x="26" y="69" font-family="Noto Sans JP, Yu Gothic, sans-serif" font-size="24" font-weight="950" fill="#ffffff">LINE/予約サイト連携</text>
+  </g>
+</svg>

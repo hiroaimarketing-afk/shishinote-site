@@ -3,15 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>シシノテ | 店舗集客に効くWebサイト・LP制作</title>
-    <meta name="description" content="シシノテは、小〜中規模店舗向けに、AIの速さとマーケティングのプロの視点でWebサイト・LPを低単価・高スピードに制作するサービスです。">
-    <meta property="og:title" content="シシノテ | 小規模店舗向けWebサイト・LP制作">
-    <meta property="og:description" content="お店の集客に、獅子の手を。AI×プロのマーケティング設計で、早く・安く・伝わるWeb制作。">
+    <title>シシノテ | 素材不足でも進められる店舗Web制作</title>
+    <meta name="description" content="シシノテは、小〜中規模店舗向けに、スマホ写真や箇条書きの情報から、プロが構成・文章・写真の見せ方を整えるWebサイト・LP制作サービスです。">
+    <meta property="og:title" content="シシノテ | 素材不足でも進められる店舗Web制作">
+    <meta property="og:description" content="写真も文章も、不完全なままで大丈夫。プロがスピーディに整え、予約・来店につながる店舗Webを制作します。">
     <meta property="og:type" content="website">
     <meta property="og:image" content="assets/site-mockups.svg">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="assets/site-mockups.svg" as="image">
+    <link rel="preload" href="assets/concepts/shishinote-fv-v2-right-visual-clean.png" as="image">
+    <link rel="preload" href="assets/concepts/shishinote-sp-fv-v3-user-composite-provided-alpha.png" as="image" media="(max-width: 580px)">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -26,103 +28,156 @@
       </button>
       <nav class="site-nav" id="site-nav" aria-label="主要メニュー">
         <a href="#value">強み</a>
-        <a href="#plans">料金</a>
         <a href="#flow">流れ</a>
+        <a href="#plans">料金</a>
+        <a href="#samples">制作例</a>
         <a href="#contact">相談</a>
       </nav>
     </header>
 
     <main id="top">
       <section class="hero">
-        <img class="hero-bg" src="assets/site-mockups.svg" alt="" aria-hidden="true">
-        <div class="hero-overlay"></div>
         <div class="hero-inner">
-          <p class="eyebrow">店舗向けWebサイト・LP制作</p>
-          <h1>シシノテ</h1>
-          <p class="hero-kicker">お店の集客に、獅子の手を。</p>
-          <p class="hero-lead">猫の手ではなく、獅子の手を。AIの速さに、マーケティングのプロの視点を重ねて、予約・来店につながるWebを早く、軽く、ちゃんと強く作ります。</p>
-          <div class="hero-actions">
-            <a class="button primary" href="#contact">無料診断を相談する</a>
-            <a class="button secondary" href="#plans">制作メニューを見る</a>
+          <div class="hero-copy">
+            <p class="eyebrow">素材不足でも進められる店舗Web制作</p>
+            <h1>
+              <span>3万円からLP・WEBサイト制作</span>
+              <span>写真も原稿も</span>
+              <span>まるっとお任せ！</span>
+            </h1>
+            <p class="hero-lead">スマホ写真と箇条書きから、プロが構成を整え、予約・来店につながるWebサイトを制作します。</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#contact">まずは無料見積り</a>
+              <a class="button secondary" href="#samples">制作例を見る</a>
+            </div>
           </div>
-          <dl class="hero-stats" aria-label="サービス概要">
-            <div>
-              <dt>最短</dt>
-              <dd>3営業日</dd>
+          <div class="hero-visual" aria-label="スマホ写真とメモをWebサイトに整える流れ">
+            <img
+              class="hero-visual-image hero-visual-image--desktop"
+              src="assets/concepts/shishinote-fv-v2-right-visual-clean.png"
+              width="895"
+              height="620"
+              alt="スマホ写真と箇条書きメモから、写真補正、文章作成、予約導線を整えてWebサイトに仕上げる流れ"
+              decoding="async"
+              fetchpriority="high"
+            >
+            <div class="hero-mobile-scene" aria-hidden="true">
+              <img class="mobile-scene-composite" src="assets/concepts/shishinote-sp-fv-v3-user-composite-provided-alpha.png" alt="" width="1122" height="1402" decoding="async" fetchpriority="high">
             </div>
-            <div>
-              <dt>初期費用</dt>
-              <dd>3万円〜</dd>
-            </div>
-            <div>
-              <dt>対象</dt>
-              <dd>ジム・美容院・飲食店</dd>
-            </div>
-          </dl>
+          </div>
+        </div>
+        <div class="hero-showcase" aria-label="制作イメージ">
+          <p>制作イメージ</p>
+          <a href="demos/fitness/index.html" target="_blank" rel="noreferrer">
+            <span>ジム・フィットネス</span>
+            <small class="showcase-logo">LIFT BASE</small>
+            <img src="assets/portfolio/fitness-fv.png" alt="">
+          </a>
+          <a href="demos/clinic/index.html" target="_blank" rel="noreferrer">
+            <span>クリニック</span>
+            <small class="showcase-logo">青葉デンタル</small>
+            <img src="assets/portfolio/clinic-fv.png" alt="">
+          </a>
+          <a href="demos/cafe/index.html" target="_blank" rel="noreferrer">
+            <span>カフェ・レストラン</span>
+            <small class="showcase-logo">MADOBA</small>
+            <img src="assets/portfolio/cafe-fv.png" alt="">
+          </a>
         </div>
       </section>
 
       <section class="section band" id="value">
         <div class="container split">
           <div>
-            <p class="eyebrow">What We Fix</p>
-            <h2>「とりあえず作ったWeb」を、来店の入口に変える。</h2>
+            <p class="eyebrow">シシノテができること</p>
+            <h2>素材集めで止まるWeb制作を、前に進める。</h2>
           </div>
           <div class="lead-stack">
-            <p>店舗のWebで大事なのは、きれいな見た目だけではありません。誰に、何を、どの順番で伝え、どこで予約や問い合わせにつなげるか。シシノテは制作スピードをAIで上げつつ、訴求・導線・CTAを人の目で整えます。</p>
-            <p>既存サイトの改善、キャンペーンLP、新規開業の名刺代わりのサイトまで、小さく始めて反応を見ながら育てる設計です。</p>
+            <p>Webサイト制作における、「写真がない」「文章が書けない」「何を載せればいいかわからない」という準備段階からお手伝いします。</p>
+            <p>スマホ写真の補正、Web向けの切り出し、必要な写真の撮り方、原稿作成まで全てお任せください。</p>
+            <details class="value-details">
+              <summary>素材支援の内容を見る</summary>
+              <div class="value-support-grid">
+                <div>
+                  <span>01</span>
+                  <strong>スマホ写真のWeb素材化</strong>
+                  <p>暗さ、傾き、余計な写り込み、画角の不足を整え、ファーストビューやメニュー紹介で使いやすい写真に調整します。</p>
+                </div>
+                <div>
+                  <span>02</span>
+                  <strong>撮影指示書の作成</strong>
+                  <p>店外、店内、スタッフ、メニューなど、何をどの角度で撮ればよいかをチェックリスト化します。</p>
+                </div>
+                <div>
+                  <span>03</span>
+                  <strong>文章のたたき台作成</strong>
+                  <p>箇条書きの情報やヒアリング回答から、見出し、本文、FAQ、予約ボタンまわりの文言を作成します。</p>
+                </div>
+                <div>
+                  <span>04</span>
+                  <strong>補助画像の作成・選定</strong>
+                  <p>実物写真が必要な箇所は正確性を優先し、背景・雰囲気・バナーなどはフリー素材や生成画像も組み合わせます。</p>
+                </div>
+              </div>
+              <p class="value-support-note">※実在しない設備・商品・施術結果をあるように見せる加工は行いません。お店の実態が正しく伝わる範囲で整えます。</p>
+            </details>
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section band" id="flow">
         <div class="container">
           <div class="section-head">
-            <p class="eyebrow">For Local Shops</p>
-            <h2>業種ごとの「予約理由」から逆算します。</h2>
+            <p class="eyebrow">ご利用の流れ</p>
+            <h2>初回相談から公開まで、迷わず進めます。</h2>
           </div>
-          <div class="industry-grid">
-            <article class="industry-card">
-              <span class="industry-icon">GYM</span>
-              <h3>パーソナルジム</h3>
-              <p>体験予約の不安を減らすために、料金、トレーナー、ビフォーアフター、通いやすさを整理。初回体験への導線を強くします。</p>
-            </article>
-            <article class="industry-card">
-              <span class="industry-icon">HAIR</span>
-              <h3>美容院・サロン</h3>
-              <p>得意な施術、スタッフの人柄、仕上がり写真、メニューを見やすく配置。Instagramや予約サイトとの接続も意識します。</p>
-            </article>
-            <article class="industry-card">
-              <span class="industry-icon">FOOD</span>
-              <h3>飲食店</h3>
-              <p>写真、メニュー、席、アクセス、予約方法をスマホで迷わず確認できる構成に。GoogleマップやSNSからの受け皿を作ります。</p>
-            </article>
-          </div>
+          <ol class="flow-list">
+            <li>
+              <span>01</span>
+              <h3>無料診断</h3>
+              <p>現状サイト、SNS、Googleマップ、予約しやすさを確認し、改善ポイントをわかりやすく整理してお伝えします。</p>
+            </li>
+            <li>
+              <span>02</span>
+              <h3>構成提案</h3>
+              <p>誰に何を伝えるかを整理し、ページ構成やお問い合わせ・予約ボタンの配置、写真や文章の準備方法を決めます。</p>
+            </li>
+            <li>
+              <span>03</span>
+              <h3>素材整理・制作</h3>
+              <p>スマホ写真や箇条書き情報をWeb向けに整え、文章・写真・予約導線を確認しながら制作します。</p>
+            </li>
+            <li>
+              <span>04</span>
+              <h3>公開・改善</h3>
+              <p>公開後の軽微修正と、次に見直すとよいポイントをご提案します。</p>
+            </li>
+          </ol>
         </div>
       </section>
 
       <section class="section dark">
         <div class="container split">
           <div>
-            <p class="eyebrow">AI + Marketing</p>
-            <h2>AIだけでは足りないところを、人が詰める。</h2>
+            <p class="eyebrow">シシノテの強み</p>
+            <h2>プロが速く、伝わる形まで整えます。</h2>
           </div>
           <div class="feature-list">
             <div class="feature-row">
-              <strong>訴求の整理</strong>
-              <span>強み、客層、競合差分を短いコピーへ翻訳</span>
+              <strong>素材不足に強い</strong>
+              <span>スマホ写真、SNS投稿、箇条書きの情報からWeb素材と原稿を整えます</span>
             </div>
             <div class="feature-row">
-              <strong>予約導線</strong>
-              <span>電話、LINE、予約サイト、フォームを迷わせない配置に</span>
+              <strong>業種別に設計</strong>
+              <span>ジム、クリニック、飲食店など、見られる情報の順番に合わせます</span>
             </div>
             <div class="feature-row">
-              <strong>スマホ最適化</strong>
-              <span>店舗検索の多いスマホで、読みやすく押しやすい設計</span>
+              <strong>予約しやすい流れに</strong>
+              <span>電話、LINE、予約サイト、フォームを迷わず使える配置にします</span>
             </div>
             <div class="feature-row">
-              <strong>公開後改善</strong>
-              <span>反応を見て、見出し・写真・CTAを小さく更新</span>
+              <strong>公開後の見直し・改善</strong>
+              <span>反応を見て、見出し・写真・お問い合わせボタンを小さく更新</span>
             </div>
           </div>
         </div>
@@ -131,21 +186,27 @@
       <section class="section" id="plans">
         <div class="container">
           <div class="section-head">
-            <p class="eyebrow">Plans</p>
-            <h2>小さく始めやすい、店舗向けメニュー。</h2>
-            <p>価格はローンチ時の仮案です。要件、素材量、予約機能、撮影有無によって調整します。</p>
+            <p class="eyebrow">料金プラン</p>
+            <h2>店舗向けの制作プラン</h2>
+            <p>料金は目安です。ページ数、セクション数、写真・文章の準備状況、CMS対応の有無に応じてお見積もりします。</p>
+          </div>
+          <div class="scope-note">
+            <strong>セクションとは?</strong>
+            <p>ファーストビュー、選ばれる理由、メニュー/料金、ギャラリー、FAQ、アクセスなど、1つの目的を持った情報のまとまりです。1ページ内に内容を詰め込みすぎないよう、プランごとに上限を決めています。</p>
           </div>
           <div class="plan-grid">
             <article class="plan-card">
               <p class="plan-label">まずは名刺代わりに</p>
               <h3>Mini LP</h3>
               <p class="price">30,000円〜</p>
-              <p class="plan-note">1ページ完結。最短3営業日。初期営業の入口商品。</p>
+              <p class="plan-note">1ページでお店の魅力をわかりやすく伝えたい方向けのプランです。スマホ写真と箇条書き情報からでも始められます。</p>
               <ul>
                 <li>1ページLP</li>
+                <li>5セクションまで</li>
                 <li>スマホ対応</li>
                 <li>支給情報の整理/基本コピー作成</li>
-                <li>問い合わせ/予約導線</li>
+                <li>スマホ写真の簡易補正</li>
+                <li>お問い合わせ/予約ボタンの設置</li>
               </ul>
               <a class="text-link" href="#contact">このプランで相談</a>
             </article>
@@ -153,11 +214,13 @@
               <p class="plan-label">おすすめ</p>
               <h3>Shop Site</h3>
               <p class="price">100,000円〜</p>
-              <p class="plan-note">複数階層サイト。店舗情報をしっかり整える主力商品。</p>
+              <p class="plan-note">メニューやアクセス、よくある質問なども含めて、お店の情報と素材をしっかり整えたい方向けのプランです。</p>
               <ul>
                 <li>3〜5ページ相当</li>
-                <li>トップ/メニュー/アクセス/FAQ</li>
-                <li>Googleビジネスプロフィール連携設計</li>
+                <li>合計14セクションまで</li>
+                <li>トップ/メニュー/アクセス/よくある質問</li>
+                <li>写真選定/撮影指示書</li>
+                <li>Googleビジネスプロフィールとの連携</li>
                 <li>公開後30日以内の軽微修正</li>
               </ul>
               <a class="button primary" href="#contact">相談する</a>
@@ -166,11 +229,12 @@
               <p class="plan-label">集客施策まで</p>
               <h3>Growth Set</h3>
               <p class="price">150,000円〜</p>
-              <p class="plan-note">LP/サイトに加えて、営業・SNS導線までまとめて整備。</p>
+              <p class="plan-note">サイト制作に加えて、SNSや広告、予約しやすい流れまでまとめて整えたい方向けのプランです。</p>
               <ul>
                 <li>キャンペーンLP</li>
-                <li>広告/投稿用バナー文言</li>
-                <li>計測タグ設計</li>
+                <li>10セクションまで</li>
+                <li>広告/投稿用の文言</li>
+                <li>アクセス計測の設定</li>
                 <li>改善提案レポート</li>
               </ul>
               <a class="text-link" href="#contact">このプランで相談</a>
@@ -179,51 +243,84 @@
         </div>
       </section>
 
-      <section class="section band" id="flow">
+      <section class="section band" id="capabilities">
         <div class="container">
           <div class="section-head">
-            <p class="eyebrow">Flow</p>
-            <h2>初回相談から公開まで、迷わず進めます。</h2>
+            <p class="eyebrow">基本対応範囲</p>
+            <h2>できることを、最初に切り分けます。</h2>
+            <p>低価格・短納期で進めるため、基本プランは素材整理、リンク設置、埋め込み、簡易設定が中心です。</p>
           </div>
-          <ol class="flow-list">
-            <li>
-              <span>01</span>
-              <h3>無料診断</h3>
-              <p>現状サイト、SNS、Googleマップ、予約導線を確認し、改善余地を3点に絞ります。</p>
-            </li>
-            <li>
-              <span>02</span>
-              <h3>構成提案</h3>
-              <p>誰に何を伝えるかを整理し、ページ構成、CTA、必要素材を決めます。</p>
-            </li>
-            <li>
-              <span>03</span>
-              <h3>制作</h3>
-              <p>AIで制作スピードを上げながら、コピーと導線はマーケティング視点で調整します。</p>
-            </li>
-            <li>
-              <span>04</span>
-              <h3>公開・改善</h3>
-              <p>公開後の軽微修正と、次に伸ばすべき集客施策を提案します。</p>
-            </li>
-          </ol>
+          <div class="capability-summary" aria-label="Webサイトに付属できる機能">
+            <article class="capability-panel">
+              <span class="status-tag standard">標準</span>
+              <h3>基本サイト機能</h3>
+              <p>SNSリンク / 問い合わせフォーム / 地図 / ギャラリー / FAQ / 動画埋め込み / アクセス分析</p>
+            </article>
+            <article class="capability-panel">
+              <span class="status-tag consult">要相談</span>
+              <h3>追加設計が必要</h3>
+              <p>写真加工点数の追加 / 生成画像の作成 / 決済導線 / 会員導線 / イベント申込 / 予約システム連携</p>
+            </article>
+            <article class="capability-panel">
+              <span class="status-tag external">別見積もり</span>
+              <h3>独自開発・高度機能</h3>
+              <p>複雑な予約管理 / 会員データベース / 在庫管理 / 独自決済システム</p>
+            </article>
+          </div>
+          <p class="capability-note">※外部サービスの契約・利用料金が別途必要になる場合があります。</p>
+        </div>
+      </section>
+
+      <section class="section samples" id="samples">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">制作イメージ</p>
+            <h2>FVだけでも、見せ方の差が出ます。</h2>
+            <p>実際のサイトを想定したファーストビュー例です。業種ごとに、最初に見せるべき情報とCTAを変えて設計します。</p>
+          </div>
+          <div class="sample-grid">
+            <article class="sample-card">
+              <a class="demo-preview" href="demos/clinic/index.html" target="_blank" rel="noreferrer">
+                <img src="assets/portfolio/clinic-fv.png" alt="クリニック・歯科サイトのファーストビュー例">
+              </a>
+              <h3>クリニック・歯科</h3>
+              <p>診療内容、初診導線、予約ボタン、安心材料をファーストビューで整理。</p>
+              <a class="sample-link" href="demos/clinic/index.html" target="_blank" rel="noreferrer">デモLPを見る</a>
+            </article>
+            <article class="sample-card">
+              <a class="demo-preview" href="demos/fitness/index.html" target="_blank" rel="noreferrer">
+                <img src="assets/portfolio/fitness-fv.png" alt="パーソナルジムLPのファーストビュー例">
+              </a>
+              <h3>パーソナルジム</h3>
+              <p>体験予約前の不安を減らすため、料金・トレーナー・スタジオの雰囲気を強調。</p>
+              <a class="sample-link" href="demos/fitness/index.html" target="_blank" rel="noreferrer">デモLPを見る</a>
+            </article>
+            <article class="sample-card">
+              <a class="demo-preview" href="demos/cafe/index.html" target="_blank" rel="noreferrer">
+                <img src="assets/portfolio/cafe-fv.png" alt="カフェサイトのファーストビュー例">
+              </a>
+              <h3>カフェ・飲食店</h3>
+              <p>料理写真、メニュー、お知らせ、営業情報を、街のお店らしい温度感で見せます。</p>
+              <a class="sample-link" href="demos/cafe/index.html" target="_blank" rel="noreferrer">デモLPを見る</a>
+            </article>
+          </div>
         </div>
       </section>
 
       <section class="section proof">
         <div class="container split">
           <div>
-            <p class="eyebrow">Starter Offer</p>
-            <h2>最初の営業では、無料診断を入口に。</h2>
-            <p>いきなり制作を売るのではなく、店舗の現状を見て「予約までの詰まり」を短く示します。相手が必要性を理解してから、LP制作か既存改善を提案します。</p>
+            <p class="eyebrow">まずは無料診断から</p>
+            <h2>今のWebまわりを、わかりやすく整理します。</h2>
+            <p>今のサイトやSNS、Googleマップ、予約しやすさの状態を確認し、改善ポイントをわかりやすく整理します。そのうえで、新しく作るべきか、今あるものを直すべきかをご提案します。</p>
           </div>
           <div class="audit-box">
             <h3>無料診断で見る項目</h3>
             <ul>
               <li>スマホで3秒以内に何の店か伝わるか</li>
               <li>料金・メニュー・場所・予約方法がすぐ見つかるか</li>
-              <li>Googleマップ/SNS/予約サイトとつながっているか</li>
-              <li>強みが競合と違う言葉で表現されているか</li>
+              <li>Googleマップ・SNS・予約サイトと自然につながっているか</li>
+              <li>お店の強みがわかりやすく伝わっているか</li>
             </ul>
           </div>
         </div>
@@ -232,21 +329,29 @@
       <section class="section faq">
         <div class="container">
           <div class="section-head">
-            <p class="eyebrow">FAQ</p>
+            <p class="eyebrow">ご相談前に</p>
             <h2>よくある質問</h2>
           </div>
           <div class="faq-grid">
             <details open>
               <summary>写真や文章がなくても依頼できますか？</summary>
-              <p>可能です。スマホ写真で始める案、撮影が必要な案、文章をこちらで整える案に分けて提案します。</p>
+              <p>可能です。スマホ写真の補正、写真の撮り方リスト、ヒアリングからの文章作成まで、ご状況に合わせて進め方をご提案します。</p>
             </details>
             <details>
-              <summary>AIで作るだけのサービスと何が違いますか？</summary>
-              <p>AIは制作速度を上げるために使います。訴求、導線、業種ごとの不安解消、CTAはマーケティング視点で人が確認します。</p>
+              <summary>スマホ写真をどこまで整えられますか？</summary>
+              <p>明るさ、色味、傾き、余計な写り込み、Web用の切り出しなどを整えられます。実物と違う設備や商品を追加するような、誤認につながる加工は行いません。</p>
+            </details>
+            <details>
+              <summary>撮影に来てもらうことはできますか？</summary>
+              <p>エリアや日程によっては出張撮影を別見積もりで対応できます。遠方の場合は、スマホで撮れる撮影指示書をお渡しし、送っていただいた写真をWeb向けに整えます。</p>
             </details>
             <details>
               <summary>予約システムも作れますか？</summary>
               <p>既存の予約サイト、LINE、Googleフォームなどとの連携を基本にします。独自予約システムが必要な場合は別見積もりです。</p>
+            </details>
+            <details>
+              <summary>自分でお知らせやメニューを更新できますか？</summary>
+              <p>更新頻度が少ない場合は、月額保守や都度修正で対応できます。頻繁に更新したい場合は、CMSやWordPress対応を別途ご提案します。</p>
             </details>
             <details>
               <summary>公開後の更新はできますか？</summary>
@@ -259,9 +364,9 @@
       <section class="section contact" id="contact">
         <div class="container contact-layout">
           <div>
-            <p class="eyebrow">Contact</p>
+            <p class="eyebrow">お問い合わせ</p>
             <h2>まずは店舗Webの無料診断から。</h2>
-            <p>店舗名、業種、今のWeb/SNS、増やしたい予約や問い合わせを教えてください。最初に改善余地を3点に絞って返します。</p>
+            <p>店舗名、業種、今のWeb/SNS、増やしたい予約や問い合わせを教えてください。改善ポイントをわかりやすく整理してお返しします。</p>
           </div>
           <form class="contact-form" action="mailto:hello@shishinote.jp" method="post" enctype="text/plain">
             <label>
@@ -273,8 +378,9 @@
               <select name="industry" required>
                 <option value="">選択してください</option>
                 <option>パーソナルジム</option>
-                <option>美容院・サロン</option>
+                <option>クリニック・歯科</option>
                 <option>飲食店</option>
+                <option>美容サロン</option>
                 <option>その他店舗</option>
               </select>
             </label>
@@ -294,7 +400,7 @@
           <img src="assets/logo-mark.svg" alt="" width="36" height="36">
           <span>シシノテ</span>
         </a>
-        <p>AI × マーケティングで、店舗のWebを強くする。</p>
+        <p>写真も文章も、不完全なままで始められる店舗Web制作。</p>
       </div>
     </footer>
 
