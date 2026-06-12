@@ -10,7 +10,7 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="assets/site-mockups.svg">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/shishinote-logo-mark.png" type="image/png">
     <link rel="preload" href="assets/site-mockups.svg" as="image">
     <link rel="preload" href="assets/concepts/shishinote-fv-v2-right-visual-clean.png" as="image">
     <link rel="preload" href="assets/concepts/shishinote-sp-fv-v3-user-composite-provided-alpha.png" as="image" media="(max-width: 580px)">
@@ -19,8 +19,7 @@
   <body>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="シシノテ トップへ">
-        <img src="assets/logo-mark.svg" alt="" width="42" height="42">
-        <span>シシノテ</span>
+        <img class="brand-logo brand-logo-full" src="assets/shishinote-logo-full.png" alt="" width="1425" height="338">
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span></span>
@@ -210,21 +209,20 @@
               <article>
                 <span class="status-tag standard">ミニマム</span>
                 <h4>月額 5,000円</h4>
-                <p class="maintenance-role">既存ページの軽微な修正</p>
+                <p class="maintenance-role">既存ページの軽微な修正（4回/月）</p>
                 <ul class="maintenance-list">
                   <li>営業時間、料金、メニュー文言の差し替え</li>
                   <li>リンク変更、テキスト修正、画像差し替え</li>
-                  <li>公開後の小さな変更を月4回まで対応</li>
                 </ul>
               </article>
               <article>
                 <span class="status-tag consult">スタンダード</span>
                 <h4>月額 10,000円</h4>
-                <p class="maintenance-role">更新作業と改善提案まで対応</p>
+                <p class="maintenance-role">更新作業（4回/月）と改善提案まで対応</p>
                 <ul class="maintenance-list">
                   <li>お知らせ追加、キャンペーン文言作成</li>
                   <li>写真の簡易補正、CTAや見出しの改善</li>
-                  <li>月1回の簡易レポートを含めて月4回まで対応</li>
+                  <li>月1回のアクセス解析レポート</li>
                 </ul>
               </article>
             </div>
@@ -334,7 +332,7 @@
             <h2>よくある質問</h2>
           </div>
           <div class="faq-grid">
-            <details open>
+            <details>
               <summary>写真や文章がなくても依頼できますか？</summary>
               <p>可能です。スマホ写真の補正、写真の撮り方リスト、ヒアリングからの文章作成まで、ご状況に合わせて進め方をご提案します。</p>
             </details>
@@ -366,7 +364,7 @@
         <div class="container contact-layout">
           <div>
             <p class="eyebrow">お問い合わせ</p>
-            <h2>まずは無料見積もりから。</h2>
+            <h2>まずは無料見積もりから</h2>
             <p>店舗名、業種、作りたいページ、写真や原稿の準備状況を教えてください。必要な範囲と概算費用を整理してお返しします。</p>
           </div>
           <form class="contact-form" action="/api/contact" method="post" data-contact-form>
@@ -414,10 +412,11 @@
     <footer class="site-footer">
       <div class="container footer-inner">
         <a class="brand" href="#top" aria-label="シシノテ トップへ">
-          <img src="assets/logo-mark.svg" alt="" width="36" height="36">
+          <img class="brand-logo brand-logo-mark" src="assets/shishinote-logo-mark.png" alt="" width="318" height="331">
           <span>シシノテ</span>
         </a>
         <p>写真も原稿も、まるっと任せるWeb制作。</p>
+        <small class="footer-copy">&copy; 2026 シシノテ</small>
       </div>
     </footer>
 
