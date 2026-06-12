@@ -68,7 +68,7 @@ if (contactForm instanceof HTMLFormElement) {
       }
 
       contactForm.reset();
-      setStatus("送信しました。内容を確認して折り返しご連絡します。", "success");
+      window.location.assign("thanks.html");
     } catch (error) {
       setStatus(error instanceof Error ? error.message : "送信に失敗しました。時間をおいて再度お試しください。", "error");
     } finally {
