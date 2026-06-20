@@ -61,7 +61,7 @@ export async function onRequestPost({ request, env }) {
     if (!response.ok) {
       const errorText = await response.text();
       console.error("Resend API error", response.status, errorText);
-      return json({ message: "送信に失敗しました。時間をおいて再度お試しください。" }, 502);
+      return json({ message: getResendErrorMessage(response.status, errorText) }, 502);
     }
 
     return json({ ok: true }, 200);
@@ -104,6 +104,29 @@ function clean(value, maxLength) {
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function getResendErrorMessage(status, errorText) {
+  const normalized = String(errorText || "").toLowerCase();
+
+  if (status === 401 || status === 403 || normalized.includes("api key")) {
+    return "送信設定の認証に失敗しています。管理者にお問い合わせください。";
+  }
+
+  if (
+    normalized.includes("domain") ||
+    normalized.includes("verify") ||
+    normalized.includes("verified") ||
+    normalized.includes("from")
+  ) {
+    return "送信元メールアドレスの認証設定を確認してください。";
+  }
+
+  if (status === 429 || normalized.includes("rate")) {
+    return "送信が混み合っています。時間をおいて再度お試しください。";
+  }
+
+  return "送信に失敗しました。時間をおいて再度お試しください。";
 }
 
 function buildText(data) {

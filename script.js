@@ -21,6 +21,15 @@ const contactForm = document.querySelector("[data-contact-form]");
 if (contactForm instanceof HTMLFormElement) {
   const status = contactForm.querySelector("[data-form-status]");
   const submitButton = contactForm.querySelector('button[type="submit"]');
+  const productionContactEndpoint = "https://shishinote.jp/api/contact";
+
+  const getContactEndpoint = () => {
+    if (window.location.protocol === "file:") {
+      return productionContactEndpoint;
+    }
+
+    return new URL(contactForm.getAttribute("action") || "/api/contact", window.location.href).href;
+  };
 
   const setStatus = (message, state) => {
     if (!(status instanceof HTMLElement)) return;
@@ -52,7 +61,7 @@ if (contactForm instanceof HTMLFormElement) {
     setStatus("送信中です。少しだけお待ちください。", "");
 
     try {
-      const response = await fetch(contactForm.action, {
+      const response = await fetch(getContactEndpoint(), {
         method: "POST",
         headers: {
           "Accept": "application/json",

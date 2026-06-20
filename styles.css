@@ -195,7 +195,9 @@ h1,
 h2,
 h3,
 p {
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-break: strict;
 }
 
 h1 {
@@ -708,7 +710,8 @@ details {
 .maintenance-grid article,
 .maintenance-list li,
 .maintenance-note {
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .maintenance-grid p {
@@ -736,7 +739,8 @@ details {
   padding-left: 20px;
   color: var(--muted);
   line-height: 1.65;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .maintenance-list li::marker {
@@ -1360,7 +1364,12 @@ h1 span {
   display: block;
 }
 
-h1 span:first-child {
+.keep-phrase {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+h1 > span:first-child {
   color: var(--green);
   white-space: normal;
 }
