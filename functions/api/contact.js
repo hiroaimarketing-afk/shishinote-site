@@ -1,7 +1,7 @@
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type"
+  "Access-Control-Allow-Headers": "Accept, Content-Type"
 };
 
 const REQUIRED_FIELDS = ["organization", "name", "email", "emailConfirm", "message"];
@@ -33,19 +33,21 @@ export async function onRequestPost({ request, env }) {
       return json({ message: "メールアドレスが一致していません。" }, 400);
     }
 
-    if (!env.RESEND_API_KEY) {
+    const resendApiKey = cleanEnv(env.RESEND_API_KEY);
+
+    if (!resendApiKey) {
       return json({ message: "送信設定が未完了です。管理者にお問い合わせください。" }, 500);
     }
 
-    const toEmail = env.CONTACT_TO_EMAIL || "hello@shishinote.jp";
-    const fromEmail = env.CONTACT_FROM_EMAIL || "シシノテ <noreply@shishinote.jp>";
+    const toEmail = cleanEnv(env.CONTACT_TO_EMAIL) || "hello@shishinote.jp";
+    const fromEmail = cleanEnv(env.CONTACT_FROM_EMAIL) || "Shishinote <noreply@shishinote.jp>";
     const subject = `【シシノテ】無料見積もりのお問い合わせ: ${data.organization}`;
     const text = buildText(data);
 
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${env.RESEND_API_KEY}`,
+        "Authorization": `Bearer ${resendApiKey}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
@@ -78,12 +80,34 @@ async function readPayload(request) {
     return request.json();
   }
 
-  if (contentType.includes("application/x-www-form-urlencoded") || contentType.includes("multipart/form-data")) {
+  if (contentType.includes("text/plain")) {
+    return parseTextPayload(await request.text());
+  }
+
+  if (contentType.includes("application/x-www-form-urlencoded")) {
+    return Object.fromEntries(new URLSearchParams(await request.text()).entries());
+  }
+
+  if (contentType.includes("multipart/form-data")) {
     const formData = await request.formData();
     return Object.fromEntries(formData.entries());
   }
 
   return {};
+}
+
+function parseTextPayload(text) {
+  const trimmed = String(text || "").trim();
+
+  if (!trimmed) {
+    return {};
+  }
+
+  try {
+    return JSON.parse(trimmed);
+  } catch {
+    return {};
+  }
 }
 
 function normalizePayload(payload) {
@@ -100,6 +124,10 @@ function normalizePayload(payload) {
 
 function clean(value, maxLength) {
   return String(value || "").trim().slice(0, maxLength);
+}
+
+function cleanEnv(value) {
+  return String(value || "").trim().replace(/^['"]|['"]$/g, "").replace(/[\r\n]/g, "");
 }
 
 function isValidEmail(email) {

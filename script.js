@@ -21,13 +21,8 @@ const contactForm = document.querySelector("[data-contact-form]");
 if (contactForm instanceof HTMLFormElement) {
   const status = contactForm.querySelector("[data-form-status]");
   const submitButton = contactForm.querySelector('button[type="submit"]');
-  const productionContactEndpoint = "https://shishinote.jp/api/contact";
 
   const getContactEndpoint = () => {
-    if (window.location.protocol === "file:") {
-      return productionContactEndpoint;
-    }
-
     return new URL(contactForm.getAttribute("action") || "/api/contact", window.location.href).href;
   };
 
@@ -64,7 +59,6 @@ if (contactForm instanceof HTMLFormElement) {
       const response = await fetch(getContactEndpoint(), {
         method: "POST",
         headers: {
-          "Accept": "application/json",
           "Content-Type": "application/json"
         },
         body: JSON.stringify(payload)
