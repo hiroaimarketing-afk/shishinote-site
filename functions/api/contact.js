@@ -33,7 +33,7 @@ export async function onRequestPost({ request, env }) {
       return json({ message: "メールアドレスが一致していません。" }, 400);
     }
 
-    const resendApiKey = cleanEnv(env.RESEND_API_KEY);
+    const resendApiKey = cleanApiKey(env.RESEND_API_KEY);
 
     if (!resendApiKey) {
       return json({ message: "送信設定が未完了です。管理者にお問い合わせください。" }, 500);
@@ -128,6 +128,13 @@ function clean(value, maxLength) {
 
 function cleanEnv(value) {
   return String(value || "").trim().replace(/^['"]|['"]$/g, "").replace(/[\r\n]/g, "");
+}
+
+function cleanApiKey(value) {
+  return cleanEnv(value)
+    .replace(/^RESEND_API_KEY=/i, "")
+    .replace(/^Bearer\s+/i, "")
+    .trim();
 }
 
 function isValidEmail(email) {
