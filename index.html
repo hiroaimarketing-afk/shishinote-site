@@ -1,425 +1,1257 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>シシノテ | 素材不足でも進められる店舗Web制作</title>
-    <meta name="description" content="シシノテは、小〜中規模店舗向けに、スマホ写真や箇条書きの情報から、プロが構成・文章・写真の見せ方を整えるWebサイト・LP制作サービスです。">
-    <meta property="og:title" content="シシノテ | 素材不足でも進められる店舗Web制作">
-    <meta property="og:description" content="写真も文章も、不完全なままで大丈夫。プロがスピーディに整え、予約・来店につながる店舗Webを制作します。">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="assets/site-mockups.svg">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="assets/shishinote-logo-mark.png" type="image/png">
-    <link rel="preload" href="assets/site-mockups.svg" as="image">
-    <link rel="preload" href="assets/concepts/shishinote-fv-v2-right-visual-clean.png" as="image">
-    <link rel="preload" href="assets/concepts/shishinote-sp-fv-v3-user-composite-provided-alpha.png" as="image" media="(max-width: 580px)">
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="シシノテ トップへ">
-        <img class="brand-logo brand-logo-full" src="assets/shishinote-logo-full.png" alt="" width="1425" height="338">
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span></span>
-        <span></span>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>シシノテ | マーケのプロが集客につながるWEBサイトを制作</title>
+  <meta name="description" content="スマホ写真と箇条書きから、マーケのプロが集客につながるWebサイトを制作。3万円〜・素材ゼロから対応・無料デモサイト制作も可。">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=20260629-2">
+  <style>
+    #root:empty::before {
+      content: "";
+      display: block;
+      min-height: 100vh;
+      background: var(--paper);
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel">
+// シシノテ LP v2 — Components
+// Babel transpiles this; exports go on window for cross-script sharing.
+
+// ========================================================================
+// SHARED PRIMITIVES
+// ========================================================================
+const Container = ({ children, className = "" }) => (
+  <div className={`container ${className}`}>{children}</div>
+);
+
+// Line-drawn brand-safe icons (no emoji / Unicode pictographs).
+// Stroke = currentColor so they inherit accent.
+const Icon = {
+  check: (p) => (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <polyline points="4 11 8 15 16 6" />
+    </svg>
+  ),
+  cross: (p) => (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" {...p}>
+      <line x1="5" y1="5" x2="15" y2="15" />
+      <line x1="15" y1="5" x2="5" y2="15" />
+    </svg>
+  ),
+  arrowRight: (p) => (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <line x1="4" y1="10" x2="16" y2="10" />
+      <polyline points="11 5 16 10 11 15" />
+    </svg>
+  ),
+  drag: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <polyline points="9 6 4 12 9 18" />
+      <polyline points="15 6 20 12 15 18" />
+    </svg>
+  ),
+  sparkle: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="M12 3 L13.5 9 L19.5 10.5 L13.5 12 L12 18 L10.5 12 L4.5 10.5 L10.5 9 Z" />
+    </svg>
+  ),
+  gift: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <rect x="3" y="8" width="18" height="13" rx="1" />
+      <line x1="12" y1="8" x2="12" y2="21" />
+      <line x1="3" y1="13" x2="21" y2="13" />
+      <path d="M12 8c-1.5-3-6-3-6 0 0 1 1 2 3 2h3" />
+      <path d="M12 8c1.5-3 6-3 6 0 0 1-1 2-3 2h-3" />
+    </svg>
+  ),
+  coin: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M14 8.5h-3.5a1.5 1.5 0 0 0 0 3h3a1.5 1.5 0 0 1 0 3H10" />
+      <line x1="12" y1="7" x2="12" y2="8.5" />
+      <line x1="12" y1="14.5" x2="12" y2="17" />
+    </svg>
+  ),
+};
+
+const Eyebrow = ({ children }) => <p className="eyebrow">{children}</p>;
+
+const SectionHead = ({ eyebrow, title, lead, center, dark }) => (
+  <div className={`section-head${center ? " center" : ""}${dark ? " dark" : ""}`}>
+    {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+    {title && <h2 className="section-title">{title}</h2>}
+    {lead && <p>{lead}</p>}
+  </div>
+);
+
+const Button = ({ children, variant = "primary", href = "#", onClick, type, disabled, large, full, className = "" }) => {
+  const cls = `button ${variant} ${large ? "large" : ""} ${full ? "full" : ""} ${className}`;
+  if (type === "submit" || onClick) {
+    return (
+      <button className={cls} type={type || "button"} onClick={onClick} disabled={disabled}>
+        {children}
       </button>
-      <nav class="site-nav" id="site-nav" aria-label="主要メニュー">
-        <a href="#plans">料金プラン</a>
-        <a href="#strengths">シシノテの強み</a>
-        <a href="#flow">ご利用の流れ</a>
-        <a href="#samples">制作イメージ</a>
+    );
+  }
+  return <a className={cls} href={href}>{children}</a>;
+};
+
+// ========================================================================
+// URGENCY BAR (top notification)
+// ========================================================================
+const UrgencyBar = ({ enabled }) => {
+  if (!enabled) return null;
+  return (
+    <div className="urgency-bar">
+      <span><span className="dot"></span>今月の受付 <strong>&nbsp;残り3枠</strong></span>
+      <span aria-hidden="true">·</span>
+      <span>無料相談から成約で <strong>&nbsp;初期費用 最大2万円OFF</strong></span>
+    </div>
+  );
+};
+
+// ========================================================================
+// HEADER
+// ========================================================================
+const Header = () => {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <header className="site-header">
+      <a className="brand" href="#top" aria-label="シシノテ トップへ">
+        <img className="brand-logo-full" src="assets/shishinote-logo-full.png" alt="シシノテ" />
+      </a>
+      <button className="nav-toggle" type="button" aria-expanded={open} onClick={() => setOpen(v => !v)}>
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="18" height="2" rx="1" fill="#111827"/>
+          <rect y="6" width="18" height="2" rx="1" fill="#111827"/>
+          <rect y="12" width="18" height="2" rx="1" fill="#111827"/>
+        </svg>
+      </button>
+      <nav className={`site-nav${open ? " is-open" : ""}`} aria-label="主要メニュー">
+        <a href="#why" onClick={() => setOpen(false)}>選ばれる理由</a>
+        <a href="#proof" onClick={() => setOpen(false)}>制作イメージ</a>
+        <a href="#plans" onClick={() => setOpen(false)}>料金</a>
+        <a href="#diagnose" onClick={() => setOpen(false)}>簡単見積もり</a>
+        <a href="#flow" onClick={() => setOpen(false)}>制作の流れ</a>
+        <a href="#faq" onClick={() => setOpen(false)}>FAQ</a>
       </nav>
+      <a href="#contact" className="header-cta">無料相談</a>
     </header>
+  );
+};
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-inner">
-          <div class="hero-copy">
-            <p class="eyebrow">Webサイト制作にシシノテを</p>
-            <h1>
-              <span><span class="keep-phrase">3万円からLP・</span><span class="keep-phrase">WEBサイト制作</span></span>
-              <span><span class="keep-phrase">写真も原稿も</span></span>
-              <span><span class="keep-phrase">まるっとお任せ！</span></span>
-            </h1>
-            <p class="hero-lead">スマホ写真と箇条書きから、プロが構成を整え、予約・来店につながるWebサイトを制作します。</p>
-            <div class="hero-actions">
-              <a class="button primary" href="#contact">まずは無料見積もり</a>
-              <a class="button secondary" href="#samples">制作例を見る</a>
+// ========================================================================
+// HERO — 3 variants (A/B/C)
+// ========================================================================
+const Hero = ({ variant }) => {
+  // A: ベネフィット訴求（マーケのプロが集客につながるWebを）
+  // B: 無料デモサイト訴求
+  // C: 3万円〜のスペック訴求（元のシシノテ）
+  const content = {
+    A: {
+      flag: { badge: <Icon.sparkle width="14" height="14" />, text: "マーケティングのプロが伴走" },
+      title: <>
+        <span className="nowrap"><span className="hl">集客</span>につながる</span><wbr/>
+        <span className="nowrap">Webサイトを、</span><br/>
+        <span className="nowrap"><span className="accent">写真も原稿も</span></span><wbr/>
+        <span className="nowrap">丸ごとお任せ。</span>
+      </>,
+      lead: "スマホ写真と箇条書きでOK。マーケのプロが構成・コピー・写真補正まで整え、予約・来店につながる店舗Webを制作します。",
+      cta: "まずは無料相談",
+      sub: "制作イメージを見る",
+      offer: {
+        head: "ご相談無料",
+        strong: "店舗ヒアリングから構成案までを無料でご提示",
+        small: "概算費用・進め方をご提案。営業の電話は一切しません"
+      }
+    },
+    B: {
+      flag: { badge: <Icon.gift width="14" height="14" />, text: "ご相談者限定" },
+      title: <>
+        あなたの店舗の<br/>
+        <span className="accent">デモサイト</span>を<br/>
+        <span className="hl">無料で作成</span>します。
+      </>,
+      lead: "「契約前に仕上がりが見たい」を解決。業種・店名・特徴をお伝えいただければ、シシノテがゼロから1ページのデモを無料で制作します。",
+      cta: "無料でデモを依頼する",
+      sub: "サンプルを見る",
+      offer: {
+        head: "デモ制作料",
+        strong: "0円・契約義務なし",
+        small: "気に入らなければそのまま破棄でOK"
+      }
+    },
+    C: {
+      flag: { badge: <Icon.coin width="14" height="14" />, text: "3万円から始められる" },
+      title: <>
+        <span className="accent">3万円から</span>LP・<br/>
+        WEBサイト制作<br/>
+        <span className="hl">まるっとお任せ！</span>
+      </>,
+      lead: "スマホ写真と箇条書きから、プロが構成を整え、予約・来店につながるWebサイトを制作します。",
+      cta: "まずは無料見積もり",
+      sub: "制作例を見る",
+      offer: {
+        head: "初期費用",
+        strong: "30,000円〜（LP1枚プラン）",
+        small: "保守は必要なときだけ・月額5,000円〜"
+      }
+    }
+  };
+  const c = content[variant] || content.A;
+
+  return (
+    <section className="hero" id="top">
+      <div className="hero-inner">
+        <div className="hero-copy">
+          <span className="hero-flag">
+            <span className="badge">{c.flag.badge}</span>
+            {c.flag.text}
+          </span>
+          <h1>{c.title}</h1>
+          <p className="hero-lead">{c.lead}</p>
+          <div className="hero-actions">
+            <Button variant="primary" large href="#contact">{c.cta} →</Button>
+            <Button variant="secondary" large href="#proof">{c.sub}</Button>
+          </div>
+          <div className="hero-offer">
+            <div className="gift">
+              {variant === "B" ? <Icon.gift width="22" height="22" />
+                : variant === "C" ? <Icon.coin width="22" height="22" />
+                : <Icon.check width="22" height="22" />}
+            </div>
+            <div className="body">
+              <span className="head">{c.offer.head}</span>
+              <strong>{c.offer.strong}</strong>
+              <small>{c.offer.small}</small>
             </div>
           </div>
-          <div class="hero-visual" aria-label="スマホ写真とメモをWebサイトに整える流れ">
+        </div>
+        <div className="hero-visual" aria-label="スマホ写真とメモをWebサイトに整える流れ">
+          <picture className="hero-visual-picture">
+            <source media="(max-width: 880px)" srcSet="assets/concepts/shishinote-fv-sp-v3-visual-user-edited.png" />
             <img
-              class="hero-visual-image hero-visual-image--desktop"
+              className="hero-visual-image"
               src="assets/concepts/shishinote-fv-v2-right-visual-clean.png"
-              width="895"
-              height="620"
               alt="スマホ写真と箇条書きメモから、写真補正、文章作成、予約導線を整えてWebサイトに仕上げる流れ"
-              decoding="async"
-              fetchpriority="high"
-            >
-            <div class="hero-mobile-scene" aria-hidden="true">
-              <img class="mobile-scene-composite" src="assets/concepts/shishinote-sp-fv-v3-user-composite-provided-alpha.png" alt="" width="1122" height="1402" decoding="async" fetchpriority="high">
-            </div>
-          </div>
+            />
+          </picture>
         </div>
-      </section>
-
-      <section class="section band" id="value">
-        <div class="container split">
-          <div>
-            <h2>素材集めから支援</h2>
-          </div>
-          <div class="lead-stack">
-            <p>Webサイト制作における、「写真がない」「文章が書けない」「何を載せればいいかわからない」という準備段階からお手伝いします。</p>
-            <p>スマホ写真の補正、Web向けの切り出し、必要な写真の撮り方、原稿作成まで全てお任せください。</p>
-            <details class="value-details">
-              <summary>素材支援の内容を見る</summary>
-              <div class="value-support-grid">
-                <div>
-                  <span>01</span>
-                  <strong>スマホ写真のWeb素材化</strong>
-                  <p>暗さ、傾き、余計な写り込み、画角の不足を整え、ファーストビューやメニュー紹介で使いやすい写真に調整します。</p>
-                </div>
-                <div>
-                  <span>02</span>
-                  <strong>撮影指示書の作成</strong>
-                  <p>店外、店内、スタッフ、メニューなど、何をどの角度で撮ればよいかをチェックリスト化します。</p>
-                </div>
-                <div>
-                  <span>03</span>
-                  <strong>文章のたたき台作成</strong>
-                  <p>箇条書きの情報やヒアリング回答から、見出し、本文、FAQ、予約ボタンまわりの文言を作成します。</p>
-                </div>
-                <div>
-                  <span>04</span>
-                  <strong>補助画像の作成・選定</strong>
-                  <p>実物写真が必要な箇所は正確性を優先し、背景・雰囲気・バナーなどはフリー素材や生成画像も組み合わせます。</p>
-                </div>
-              </div>
-              <p class="value-support-note">※実在しない設備・商品・施術結果をあるように見せる加工は行いません。お店の実態が正しく伝わる範囲で整えます。</p>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="plans">
-        <div class="container">
-          <div class="section-head">
-            <h2>料金プラン</h2>
-            <p>まずは初期制作費でサイトを公開できる状態に整えます。公開後の更新や改善は、必要に応じて保守運用プランで対応します。</p>
-          </div>
-          <div class="plan-common" aria-label="全プラン共通の基本対応範囲">
-            <div>
-              <span class="status-tag standard">全プラン共通</span>
-              <h3>基本料金に含まれる対応範囲</h3>
-            </div>
-            <ul class="common-list">
-              <li>スマホ対応</li>
-              <li>SNS/予約リンク設置</li>
-              <li>問い合わせフォーム</li>
-              <li>Googleマップ埋め込み</li>
-              <li>基本コピー作成</li>
-              <li>スマホ写真の簡易補正</li>
-            </ul>
-          </div>
-          <div class="plan-grid">
-            <article class="plan-card">
-              <p class="plan-label">まずはお手軽にはじめたい方</p>
-              <h3>ミニマム（LP1枚）</h3>
-              <p class="price">30,000円〜</p>
-              <p class="plan-note">1ページで、お店の魅力と問い合わせ導線をシンプルに整えます。</p>
-              <dl class="plan-specs">
-                <div>
-                  <dt>ページ数</dt>
-                  <dd>1ページLP</dd>
-                </div>
-                <div>
-                  <dt>セクション数</dt>
-                  <dd>5<span class="term-tooltip" tabindex="0">セクション<span class="tooltip-bubble" role="tooltip">ファーストビュー、選ばれる理由、メニュー/料金、FAQ、アクセスなど、1つの目的を持った情報のまとまりです。</span></span>まで</dd>
-                </div>
-              </dl>
-              <div class="plan-addons">
-                <strong>主な用途</strong>
-                <ul>
-                  <li>開業告知・キャンペーンLP</li>
-                  <li>問い合わせや予約リンクへの誘導</li>
-                </ul>
-              </div>
-              <a class="text-link" href="#contact">このプランで相談</a>
-            </article>
-            <article class="plan-card highlight">
-              <p class="plan-label">店舗サイトをしっかり整えたい方</p>
-              <h3>スタンダード</h3>
-              <p class="price">100,000円〜</p>
-              <p class="plan-note">店舗情報をしっかり整理し、予約・問い合わせにつながる基本サイトを作ります。</p>
-              <dl class="plan-specs">
-                <div>
-                  <dt>ページ数</dt>
-                  <dd>3〜5ページ</dd>
-                </div>
-                <div>
-                  <dt>セクション数</dt>
-                  <dd>合計14<span class="term-tooltip" tabindex="0">セクション<span class="tooltip-bubble" role="tooltip">ファーストビュー、選ばれる理由、メニュー/料金、FAQ、アクセスなど、1つの目的を持った情報のまとまりです。</span></span>まで</dd>
-                </div>
-              </dl>
-              <div class="plan-addons">
-                <strong>実装内容の例</strong>
-                <ul>
-                  <li>予約システム連携</li>
-                  <li>決済/会員導線</li>
-                  <li>CMS/WordPress対応</li>
-                </ul>
-              </div>
-              <a class="button primary" href="#contact">このプランで相談</a>
-            </article>
-            <article class="plan-card">
-              <p class="plan-label">集客施策までまとめてご支援</p>
-              <h3>プレミアム</h3>
-              <p class="price">300,000円〜</p>
-              <p class="plan-note">サイト制作に加えて、GoogleマップやSNSまで含めた集客導線を整えます。</p>
-              <dl class="plan-specs">
-                <div>
-                  <dt>ページ数</dt>
-                  <dd>3〜5ページ + LP1本</dd>
-                </div>
-                <div>
-                  <dt>セクション数</dt>
-                  <dd>合計20<span class="term-tooltip" tabindex="0">セクション<span class="tooltip-bubble" role="tooltip">ファーストビュー、選ばれる理由、メニュー/料金、FAQ、アクセスなど、1つの目的を持った情報のまとまりです。</span></span>まで</dd>
-                </div>
-              </dl>
-              <div class="plan-addons">
-                <strong>集客支援の例</strong>
-                <ul>
-                  <li>MEO初期整備: Googleマップ情報の見直し</li>
-                  <li>口コミ依頼・投稿導線の設計</li>
-                  <li>SNS/広告用の見出し・文言作成</li>
-                </ul>
-              </div>
-              <a class="text-link" href="#contact">このプランで相談</a>
-            </article>
-          </div>
-          <div class="maintenance-block" aria-label="保守運用プラン">
-            <div class="section-head compact maintenance-head">
-              <span class="maintenance-optional">必要時のみ発生</span>
-              <h3>公開後の保守運用</h3>
-            </div>
-            <div class="maintenance-grid">
-              <article>
-                <span class="status-tag standard">ミニマム</span>
-                <h4>月額 5,000円</h4>
-                <p class="maintenance-role">既存ページの軽微な修正（4回/月）</p>
-                <ul class="maintenance-list">
-                  <li>営業時間、料金、メニュー文言の差し替え</li>
-                  <li>リンク変更、テキスト修正、画像差し替え</li>
-                </ul>
-              </article>
-              <article>
-                <span class="status-tag consult">スタンダード</span>
-                <h4>月額 10,000円</h4>
-                <p class="maintenance-role">更新作業（4回/月）と改善提案まで対応</p>
-                <ul class="maintenance-list">
-                  <li>お知らせ追加、キャンペーン文言作成</li>
-                  <li>写真の簡易補正、CTAや見出しの改善</li>
-                  <li>月1回のアクセス解析レポート</li>
-                </ul>
-              </article>
-            </div>
-            <p class="maintenance-note">※1回の依頼は、同一ページ内の軽微な修正または1件のお知らせ追加を目安とします。ページ追加・大幅なデザイン変更は別途お見積もりです。</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section band" id="flow">
-        <div class="container">
-          <div class="section-head">
-            <h2>ご利用の流れ</h2>
-          </div>
-          <ol class="flow-list">
-            <li>
-              <span>01</span>
-              <h3>無料見積もり</h3>
-              <p>店舗の業種、必要なページ、写真や原稿の準備状況を確認し、制作範囲と概算費用を整理してお伝えします。</p>
-            </li>
-            <li>
-              <span>02</span>
-              <h3>構成提案</h3>
-              <p>誰に何を伝えるかを整理し、ページ構成やお問い合わせ・予約ボタンの配置、写真や文章の準備方法を決めます。</p>
-            </li>
-            <li>
-              <span>03</span>
-              <h3>素材整理・制作</h3>
-              <p>スマホ写真や箇条書き情報をWeb向けに整え、文章・写真・予約導線を確認しながら制作します。</p>
-            </li>
-            <li>
-              <span>04</span>
-              <h3>公開・改善</h3>
-              <p>公開後の軽微修正と、次に見直すとよいポイントをご提案します。</p>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <section class="section dark" id="strengths">
-        <div class="container split">
-          <div>
-            <p class="eyebrow">シシノテの強み</p>
-            <h2 class="strength-title">
-              <span>素材準備からサイト公開まで、</span>
-              <span>プロがスピーディーに伴走</span>
-            </h2>
-          </div>
-          <div class="feature-list">
-            <div class="feature-row">
-              <strong>素材不足でも安心</strong>
-              <span>スマホ写真、SNS投稿、箇条書きの情報からWeb素材と原稿を整えます</span>
-            </div>
-            <div class="feature-row">
-              <strong>業種別にオーダーメイド</strong>
-              <span>ジム、クリニック、飲食店など、業種ごとに最適な設計にします</span>
-            </div>
-            <div class="feature-row">
-              <strong>成果につながる構成設計</strong>
-              <span>マーケティングのプロが、予約・問い合わせにつながる構成を設計します</span>
-            </div>
-            <div class="feature-row">
-              <strong>公開後の見直し・改善</strong>
-              <span>お客様の反応を見て、見出し・写真・お問い合わせボタン等を課題となる箇所を改善</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section samples" id="samples">
-        <div class="container">
-          <div class="section-head">
-            <h2>制作イメージ</h2>
-          </div>
-          <div class="sample-grid">
-            <article class="sample-card">
-              <a class="demo-preview" href="demos/clinic/index.html" target="_blank" rel="noreferrer">
-                <img src="assets/portfolio/clinic-fv.png" alt="クリニック・歯科サイトのファーストビュー例">
-              </a>
-              <h3>クリニック・歯科</h3>
-              <p>診療内容、初診導線、予約ボタン、安心材料をファーストビューで整理。</p>
-              <a class="sample-link" href="demos/clinic/index.html" target="_blank" rel="noreferrer">デモLPを見る</a>
-            </article>
-            <article class="sample-card">
-              <a class="demo-preview" href="demos/fitness/index.html" target="_blank" rel="noreferrer">
-                <img src="assets/portfolio/fitness-fv.png" alt="パーソナルジムLPのファーストビュー例">
-              </a>
-              <h3>パーソナルジム</h3>
-              <p>体験予約前の不安を減らすため、料金・トレーナー・スタジオの雰囲気を強調。</p>
-              <a class="sample-link" href="demos/fitness/index.html" target="_blank" rel="noreferrer">デモLPを見る</a>
-            </article>
-            <article class="sample-card">
-              <a class="demo-preview" href="demos/cafe/index.html" target="_blank" rel="noreferrer">
-                <img src="assets/portfolio/cafe-fv.png" alt="カフェサイトのファーストビュー例">
-              </a>
-              <h3>カフェ・飲食店</h3>
-              <p>料理写真、メニュー、お知らせ、営業情報を、街のお店らしい温度感で見せます。</p>
-              <a class="sample-link" href="demos/cafe/index.html" target="_blank" rel="noreferrer">デモLPを見る</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section faq">
-        <div class="container">
-          <div class="section-head">
-            <p class="eyebrow">ご相談前に</p>
-            <h2>よくある質問</h2>
-          </div>
-          <div class="faq-grid">
-            <details>
-              <summary>写真や文章がなくても依頼できますか？</summary>
-              <p>可能です。スマホ写真の補正、写真の撮り方リスト、ヒアリングからの文章作成まで、ご状況に合わせて進め方をご提案します。</p>
-            </details>
-            <details>
-              <summary>スマホ写真をどこまで整えられますか？</summary>
-              <p>明るさ、色味、傾き、余計な写り込み、Web用の切り出しなどを整えられます。実物と違う設備や商品を追加するような、誤認につながる加工は行いません。</p>
-            </details>
-            <details>
-              <summary>撮影に来てもらうことはできますか？</summary>
-              <p>エリアや日程によっては出張撮影を別見積もりで対応できます。遠方の場合は、スマホで撮れる撮影指示書をお渡しし、送っていただいた写真をWeb向けに整えます。</p>
-            </details>
-            <details>
-              <summary>予約システムも作れますか？</summary>
-              <p>既存の予約サイト、LINE、Googleフォームなどとの連携を基本にします。独自予約システムが必要な場合は別見積もりです。</p>
-            </details>
-            <details>
-              <summary>自分でお知らせやメニューを更新できますか？</summary>
-              <p>更新頻度が少ない場合は、月額保守や都度修正で対応できます。頻繁に更新したい場合は、CMSやWordPress対応を別途ご提案します。</p>
-            </details>
-            <details>
-              <summary>公開後の更新はできますか？</summary>
-              <p>軽微な修正や改善提案はプランに応じて対応します。継続運用が必要な場合は月額保守を提案します。</p>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      <section class="section contact" id="contact">
-        <div class="container contact-layout">
-          <div>
-            <p class="eyebrow">お問い合わせ</p>
-            <h2><span class="keep-phrase">まずは無料</span><span class="keep-phrase">見積もりから</span></h2>
-            <p>店舗名、業種、作りたいページ、写真や原稿の準備状況を教えてください。必要な範囲と概算費用を整理してお返しします。</p>
-          </div>
-          <form class="contact-form" action="https://shishinote.jp/api/contact" method="post" data-contact-form>
-            <input class="form-honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <label>
-              <span class="field-label">法人名・店舗名</span>
-              <span class="field-required">必須</span>
-              <input type="text" name="organization" autocomplete="organization" required>
-            </label>
-            <label>
-              <span class="field-label">お名前</span>
-              <span class="field-required">必須</span>
-              <input type="text" name="name" autocomplete="name" required>
-            </label>
-            <label>
-              <span class="field-label">メールアドレス</span>
-              <span class="field-required">必須</span>
-              <input type="email" name="email" autocomplete="email" inputmode="email" required>
-            </label>
-            <label>
-              <span class="field-label">メールアドレス確認</span>
-              <span class="field-required">必須</span>
-              <input type="email" name="emailConfirm" autocomplete="email" inputmode="email" required>
-            </label>
-            <label>
-              <span class="field-label">電話番号</span>
-              <input type="tel" name="phone" autocomplete="tel" inputmode="tel">
-            </label>
-            <label>
-              <span class="field-label">既存WEBサイト・SNSのURL等</span>
-              <input type="url" name="websiteUrl" autocomplete="url" inputmode="url" placeholder="https://">
-            </label>
-            <label>
-              <span class="field-label">お問い合わせ・ご相談内容</span>
-              <span class="field-required">必須</span>
-              <textarea name="message" rows="6" placeholder="※可能な範囲で、事業概要・依頼背景・目標・ご予算感などを記載いただけますとご案内がスムーズになります。" required></textarea>
-            </label>
-            <p class="form-status" data-form-status aria-live="polite"></p>
-            <button class="button primary" type="submit">無料見積もりを依頼する</button>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <a class="brand" href="#top" aria-label="シシノテ トップへ">
-          <img class="brand-logo brand-logo-mark" src="assets/shishinote-logo-mark.png" alt="" width="318" height="331">
-          <span>シシノテ</span>
-        </a>
-        <p>写真も原稿も、まるっと任せるWeb制作。</p>
-        <small class="footer-copy">&copy; 2026 シシノテ</small>
       </div>
-    </footer>
+      <div className="hero-trust">
+        <div>
+          <span className="label">素材準備</span>
+          <span className="value"><span className="accent">スマホ写真</span><span className="unit">でOK</span></span>
+        </div>
+        <div>
+          <span className="label">原稿作成</span>
+          <span className="value"><span className="accent">プロ</span><span className="unit">が代筆</span></span>
+        </div>
+        <div>
+          <span className="label">構成設計</span>
+          <span className="value"><span className="accent">マーケ視点</span><span className="unit">で組み立て</span></span>
+        </div>
+        <div>
+          <span className="label">初期費用</span>
+          <span className="value"><span className="accent">30,000円</span><span className="unit">〜</span></span>
+        </div>
+      </div>
+    </section>
+  );
+};
 
-    <script src="script.js?v=20260621-2"></script>
-  </body>
+// ========================================================================
+// PAIN BAR — pain points → "全部任せてOK"
+// ========================================================================
+const PainBar = () => (
+  <section className="pain-bar" aria-label="よくあるお悩み">
+    <div className="pain-inner">
+      <h3>こんなお悩み、<span className="underline">全部任せてOK</span>です</h3>
+      <ul className="pain-list">
+        <li>写真がスマホで撮ったものしかない</li>
+        <li>文章を書く時間がない</li>
+        <li>何を載せればいいか分からない</li>
+        <li>大手の制作会社は高くて手が出ない</li>
+        <li>SNSはあるけどHPが無い</li>
+        <li>古いHPを刷新したい</li>
+      </ul>
+    </div>
+  </section>
+);
+
+window.Container = Container;
+window.Eyebrow = Eyebrow;
+window.SectionHead = SectionHead;
+window.Button = Button;
+window.UrgencyBar = UrgencyBar;
+window.Header = Header;
+window.Hero = Hero;
+window.PainBar = PainBar;
+
+
+  </script>
+  <script type="text/babel">
+// シシノテ LP v2 — Sections (Reasons / Before-After / Plans / Compare / Portfolio / Testimonials / Guarantee / Flow / FAQ / Contact / Footer)
+
+// ========================================================================
+// REASONS — 選ばれる理由 (3 cards with numbers + stats)
+// ========================================================================
+const Reasons = () => (
+  <section className="section" id="why">
+    <Container>
+      <SectionHead
+        center
+        eyebrow="WHY SHISHINOTE"
+        title={<>シシノテが<span className="accent">選ばれる理由</span></>}
+        lead="他社では断られがちな「素材が揃っていない店舗」こそ、シシノテの得意領域です。"
+      />
+      <div className="reason-grid">
+        <article className="reason-card">
+          <span className="num">01</span>
+          <h3><span className="accent">マーケのプロ</span>が構成設計から伴走</h3>
+          <p>誰に何を伝えるか、どこで予約させるかを、店舗マーケ経験豊富なディレクターが設計。「作って終わり」のWebではなく、来店・予約につながる導線を組み立てます。</p>
+          <div className="stat">構成・コピー・写真の見せ方まで一貫</div>
+        </article>
+        <article className="reason-card">
+          <span className="num">02</span>
+          <h3>素材は<span className="accent">スマホ写真</span>と箇条書きでOK</h3>
+          <p>写真補正、撮影指示書の作成、原稿のたたき台まで全部こちらで整えます。店舗側にお願いするのは、お店の魅力と現状を教えていただくことだけ。</p>
+          <div className="stat">「素材ゼロ」からのご依頼にも対応</div>
+        </article>
+        <article className="reason-card">
+          <span className="num">03</span>
+          <h3>料金は<span className="accent">完全明朗</span>・必要なときだけ保守</h3>
+          <p>お見積もりは事前明示が原則で、ご了承いただいた範囲を超える追加請求は行いません。公開後の保守も月額5,000円〜の必要分だけで、年間契約は不要です。</p>
+          <div className="stat">追加費用は事前に必ずご相談</div>
+        </article>
+      </div>
+    </Container>
+  </section>
+);
+
+// ========================================================================
+// BEFORE / AFTER — slider showing photo correction
+// ========================================================================
+const BeforeAfterCard = ({ before, after, title, desc }) => {
+  const [pos, setPos] = React.useState(50);
+  const ref = React.useRef(null);
+  const dragging = React.useRef(false);
+
+  const move = (clientX) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = Math.max(0, Math.min(rect.width, clientX - rect.left));
+    setPos((x / rect.width) * 100);
+  };
+
+  const onDown = (e) => {
+    dragging.current = true;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    move(clientX);
+  };
+  const onMove = (e) => {
+    if (!dragging.current) return;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    move(clientX);
+  };
+  const onUp = () => { dragging.current = false; };
+
+  React.useEffect(() => {
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+    window.addEventListener('touchmove', onMove, { passive: true });
+    window.addEventListener('touchend', onUp);
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseup', onUp);
+      window.removeEventListener('touchmove', onMove);
+      window.removeEventListener('touchend', onUp);
+    };
+  }, []);
+
+  return (
+    <div className="ba-card">
+      <div
+        className="ba-frame"
+        ref={ref}
+        style={{ "--pos": pos + "%" }}
+        onMouseDown={onDown}
+        onTouchStart={onDown}
+      >
+        <img className="after" src={after} alt="" />
+        <img className="before" src={before} alt="" />
+        <span className="tag before-tag">BEFORE</span>
+        <span className="tag after-tag">AFTER</span>
+        <div className="handle"></div>
+      </div>
+      <div className="ba-meta">
+        <h4>{title}</h4>
+        <p>{desc}</p>
+      </div>
+    </div>
+  );
+};
+
+const BeforeAfter = () => (
+  <section className="section band" id="ba">
+    <Container>
+      <SectionHead
+        eyebrow="BEFORE / AFTER"
+        title={<>スマホ写真が、<br/><span className="accent">Web素材</span>に生まれ変わる。</>}
+        lead="お客様から送られてきたスマホ写真を、シシノテが Web 用に補正・整理します（バーをドラッグして比較）。"
+      />
+      <div className="ba-grid">
+        <BeforeAfterCard
+          before="assets/demos/before-clinic-user-20260630.png"
+          after="assets/demos/after-clinic.png"
+          title="歯科クリニック・診療室"
+          desc="室内照明だけで撮影した暗い写真を、自然光が差し込むような明るさに。緑の差し色と木目の質感が伝わるトーンに整えます。"
+        />
+        <BeforeAfterCard
+          before="assets/demos/before-cafe-user-20260630.png"
+          after="assets/demos/after-cafe.png"
+          title="カフェ・モーニング写真"
+          desc="影に沈みがちな店内の食卓写真を、シズル感の出る明るさと色味に補正。トーストの焼き色やフルーツの鮮やかさを引き出します。"
+        />
+        <BeforeAfterCard
+          before="assets/demos/before-fitness-user-20260630.png"
+          after="assets/demos/after-fitness.png"
+          title="パーソナルジム・スタジオ"
+          desc="黒い設備とフロアで暗く沈みがちな空間を、間接照明の温度感と素材感が伝わる明るさに。器具の質感も鮮明になります。"
+        />
+      </div>
+    </Container>
+  </section>
+);
+
+// ========================================================================
+// DIAGNOSTIC TOOL — 5-question quiz returning recommended plan
+// ========================================================================
+const DIAG_QUESTIONS = [
+  {
+    q: "現在のWebサイトの状況を教えてください",
+    options: [
+      { label: "まだHPは無い（SNSのみ）", score: { mini: 2, std: 1, prem: 0 } },
+      { label: "古いHPを刷新したい", score: { mini: 1, std: 3, prem: 1 } },
+      { label: "新店舗のオープン告知が必要", score: { mini: 3, std: 1, prem: 0 } },
+      { label: "集客を本気で伸ばしたい", score: { mini: 0, std: 2, prem: 3 } },
+    ]
+  },
+  {
+    q: "用意できるページ数は？",
+    options: [
+      { label: "1ページで十分", score: { mini: 3, std: 0, prem: 0 } },
+      { label: "3〜5ページくらい", score: { mini: 0, std: 3, prem: 1 } },
+      { label: "本格的なサイトを作りたい", score: { mini: 0, std: 1, prem: 3 } },
+    ]
+  },
+  {
+    q: "予約・問い合わせの仕組みは？",
+    options: [
+      { label: "フォームか電話で十分", score: { mini: 3, std: 1, prem: 0 } },
+      { label: "予約サイト/LINE と連携したい", score: { mini: 1, std: 3, prem: 1 } },
+      { label: "予約・決済も組み込みたい", score: { mini: 0, std: 1, prem: 3 } },
+    ]
+  },
+  {
+    q: "SNS・Google マップの活用は？",
+    options: [
+      { label: "今はサイトだけで十分", score: { mini: 3, std: 1, prem: 0 } },
+      { label: "SNS リンク設置くらいで", score: { mini: 1, std: 3, prem: 1 } },
+      { label: "MEO・SNS まで本格的に", score: { mini: 0, std: 0, prem: 3 } },
+    ]
+  },
+  {
+    q: "公開後の更新・改善は？",
+    options: [
+      { label: "公開できたら一旦終わりでOK", score: { mini: 3, std: 1, prem: 0 } },
+      { label: "月1〜2回は更新したい", score: { mini: 0, std: 3, prem: 2 } },
+      { label: "アクセス解析しながら改善したい", score: { mini: 0, std: 1, prem: 3 } },
+    ]
+  },
+];
+
+const PLAN_INFO = {
+  mini: {
+    badge: "おすすめプラン",
+    name: "ミニマム（LP1枚）",
+    price: "30,000円〜",
+    items: [
+      "1ページLP・5セクションまで",
+      "問い合わせフォーム・SNSリンク",
+      "スマホ対応・写真の簡易補正",
+      "公開設定までシシノテで完結"
+    ]
+  },
+  std: {
+    badge: "おすすめプラン",
+    name: "スタンダード",
+    price: "100,000円〜",
+    items: [
+      "3〜5ページ・合計14セクションまで",
+      "予約システム連携・CMS対応",
+      "Googleマップ・SNS導線整理",
+      "公開時の動作確認まで実施"
+    ]
+  },
+  prem: {
+    badge: "おすすめプラン",
+    name: "プレミアム",
+    price: "300,000円〜",
+    items: [
+      "本格サイト + LP1本",
+      "MEO初期整備・口コミ導線設計",
+      "SNS/広告用コピー作成",
+      "月次アクセス解析レポート"
+    ]
+  }
+};
+
+const DiagnosticTool = () => {
+  const [step, setStep] = React.useState(0);
+  const [answers, setAnswers] = React.useState([]);
+  const total = DIAG_QUESTIONS.length;
+  const done = step >= total;
+
+  const select = (idx) => {
+    const next = [...answers];
+    next[step] = idx;
+    setAnswers(next);
+    setTimeout(() => setStep(step + 1), 200);
+  };
+
+  const reset = () => { setStep(0); setAnswers([]); };
+
+  const resultPlan = React.useMemo(() => {
+    if (!done) return null;
+    const score = { mini: 0, std: 0, prem: 0 };
+    answers.forEach((a, i) => {
+      const opt = DIAG_QUESTIONS[i]?.options[a];
+      if (!opt) return;
+      score.mini += opt.score.mini;
+      score.std += opt.score.std;
+      score.prem += opt.score.prem;
+    });
+    const best = Object.entries(score).sort((a, b) => b[1] - a[1])[0][0];
+    return PLAN_INFO[best];
+  }, [done, answers]);
+
+  return (
+    <section className="section diagnostic" id="diagnose">
+      <Container>
+        <div>
+          <Eyebrow>FREE DIAGNOSIS</Eyebrow>
+          <h2 className="section-title" style={{ color: "#fff" }}>
+            <span style={{ color: "var(--gold)" }}>30秒</span>でわかる、<br/>
+            あなたのお店に最適な<br/>
+            <span style={{ background: "linear-gradient(180deg, transparent 62%, rgba(247,183,51,.5) 62%)", padding: "0 4px" }}>プランと概算費用</span>
+          </h2>
+          <p style={{ color: "rgba(255,255,255,.78)", fontSize: 16, lineHeight: 1.9, fontWeight: 700, marginTop: 18 }}>
+            業種・規模・目的を5つの質問でお聞きするだけ。匿名でもご利用いただけます。<br/>
+            お見積もりはあくまで目安。正式な金額は無料相談でお出しします。
+          </p>
+          <div style={{ marginTop: 28, display: "flex", gap: 16, flexWrap: "wrap" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, fontWeight: 800 }}>
+              <span style={{ width: 28, height: 28, borderRadius: "50%", background: "var(--gold)", color: "var(--ink)", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+                <Icon.check width="16" height="16" />
+              </span>
+              入力情報の保存なし
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, fontWeight: 800 }}>
+              <span style={{ width: 28, height: 28, borderRadius: "50%", background: "var(--gold)", color: "var(--ink)", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+                <Icon.check width="16" height="16" />
+              </span>
+              連絡先入力は任意
+            </div>
+          </div>
+        </div>
+
+        <div className="diagnostic-card">
+          <div className="diag-progress">
+            {Array.from({ length: total }).map((_, i) => (
+              <span key={i} className={i < step ? "done" : i === step ? "active" : ""}></span>
+            ))}
+          </div>
+          {!done ? (
+            <div className="diag-q">
+              <span className="step-label">Question {step + 1} / {total}</span>
+              <h3>{DIAG_QUESTIONS[step].q}</h3>
+              <div className="diag-options">
+                {DIAG_QUESTIONS[step].options.map((opt, i) => (
+                  <button
+                    key={i}
+                    className={`diag-option${answers[step] === i ? " selected" : ""}`}
+                    type="button"
+                    onClick={() => select(i)}
+                  >
+                    <span className="bullet"></span>
+                    <span>{opt.label}</span>
+                  </button>
+                ))}
+              </div>
+              <div className="diag-actions">
+                {step > 0 && (
+                  <button type="button" className="ghost" onClick={() => setStep(step - 1)}>← 前に戻る</button>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div className="diag-result">
+              <span className="badge">{resultPlan.badge}</span>
+              <h3 className="plan-name">{resultPlan.name}</h3>
+              <p className="price">{resultPlan.price}</p>
+              <ul>
+                {resultPlan.items.map((it, i) => <li key={i}>{it}</li>)}
+              </ul>
+              <div style={{ display: "flex", gap: 10, marginTop: 8, flexWrap: "wrap" }}>
+                <Button variant="primary" href="#contact">このプランで相談する →</Button>
+                <button type="button" className="ghost" onClick={reset}>もう一度診断する</button>
+              </div>
+            </div>
+          )}
+        </div>
+      </Container>
+    </section>
+  );
+};
+
+// ========================================================================
+// QUOTE SIMULATOR — sliders + checkboxes → live price
+// ========================================================================
+const QuoteSimulator = () => {
+  const [pages, setPages] = React.useState(3);
+  const [opts, setOpts] = React.useState({
+    booking: false,
+    cms: false,
+    meo: true,
+    shoot: false,
+    sns: false,
+    maint: false,
+  });
+
+  const base = pages === 1 ? 30000 : pages <= 3 ? 100000 : pages <= 5 ? 180000 : 280000;
+  const addOns = [
+    { key: "booking", price: 30000 },
+    { key: "cms", price: 50000 },
+    { key: "meo", price: 40000 },
+    { key: "shoot", price: 50000 },
+    { key: "sns", price: 30000 },
+    { key: "maint", price: 10000 },
+  ];
+  const total = base + addOns.reduce((s, a) => opts[a.key] ? s + a.price : s, 0);
+
+  const toggle = (k) => setOpts(o => ({ ...o, [k]: !o[k] }));
+
+  return (
+    <section className="section" id="simulator">
+      <Container>
+        <SectionHead
+          center
+          eyebrow="QUOTE SIMULATOR"
+          title={<>条件を選ぶだけで、<span className="accent">概算費用が即時表示</span></>}
+          lead="ページ数とオプションを動かして、おおよその初期費用を確認できます。最終金額は無料相談で確定します。"
+        />
+        <div className="quote-card">
+          <div className="quote-controls">
+            <div className="quote-row">
+              <div className="label">
+                <span>ページ数</span>
+                <span className="val">{pages === 1 ? "1ページLP" : pages <= 5 ? `${pages}ページ` : "本格サイト（6+）"}</span>
+              </div>
+              <input
+                type="range"
+                min="1"
+                max="6"
+                step="1"
+                value={pages}
+                onChange={(e) => setPages(parseInt(e.target.value))}
+              />
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "var(--muted)", fontWeight: 800 }}>
+                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6+</span>
+              </div>
+            </div>
+            <div className="quote-row">
+              <div className="label">
+                <span>追加オプション</span>
+              </div>
+              <div className="quote-checks">
+                <label>
+                  <input type="checkbox" checked={opts.booking} onChange={() => toggle("booking")} />
+                  予約システム連携（+30,000円）
+                </label>
+                <label>
+                  <input type="checkbox" checked={opts.cms} onChange={() => toggle("cms")} />
+                  CMS / WordPress対応（+50,000円）
+                </label>
+                <label>
+                  <input type="checkbox" checked={opts.meo} onChange={() => toggle("meo")} />
+                  MEO初期整備（+40,000円）
+                </label>
+                <label>
+                  <input type="checkbox" checked={opts.shoot} onChange={() => toggle("shoot")} />
+                  出張撮影（+50,000円〜）
+                </label>
+                <label>
+                  <input type="checkbox" checked={opts.sns} onChange={() => toggle("sns")} />
+                  SNS/広告用コピー作成（+30,000円）
+                </label>
+                <label>
+                  <input type="checkbox" checked={opts.maint} onChange={() => toggle("maint")} />
+                  公開後の月額保守（+10,000円/月）
+                </label>
+              </div>
+            </div>
+          </div>
+          <div className="quote-output">
+            <span className="label">初期費用 概算</span>
+            <p className="price">{total.toLocaleString()}<small>円〜</small></p>
+            <p className="desc">含まれるもの: 構成設計、コピー作成、スマホ写真の補正、SP対応、問い合わせフォーム、Googleマップ埋め込み。<br/>※最終金額は無料相談で確定します。</p>
+            <div className="cta">
+              <Button variant="primary" full href="#contact">この内容で無料相談する →</Button>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+};
+
+window.Reasons = Reasons;
+window.BeforeAfter = BeforeAfter;
+window.DiagnosticTool = DiagnosticTool;
+window.QuoteSimulator = QuoteSimulator;
+
+
+  </script>
+  <script type="text/babel">
+// シシノテ LP v2 — Sections part 2 (Plans / Compare / Portfolio / Testimonials / Guarantee / Flow / FAQ / Contact / Footer / StickyCTA)
+
+// ========================================================================
+// PLANS
+// ========================================================================
+const Plans = () => (
+  <section className="section band" id="plans">
+    <Container>
+      <SectionHead
+        center
+        eyebrow="PRICING"
+        title={<><span className="accent">3万円</span>から、料金は<span className="hl">完全明朗</span></>}
+        lead="初期制作費でサイトを公開できる状態まで整えます。公開後の更新は必要なときだけ。追加料金は事前明示が原則です。"
+      />
+      <div className="plan-grid">
+        <article className="plan-card">
+          <p className="plan-label">まずはお手軽に</p>
+          <h3>ミニマム（LP1枚）</h3>
+          <p className="price">30,000<small>円〜</small></p>
+          <p className="plan-note">1ページで、お店の魅力と問い合わせ導線をシンプルに整えます。</p>
+          <ul className="plan-features">
+            <li>1ページLP・5セクションまで</li>
+            <li>スマホ写真の簡易補正</li>
+            <li>問い合わせフォーム</li>
+            <li>Googleマップ埋め込み</li>
+            <li>公開設定までシシノテで完結</li>
+          </ul>
+          <div className="cta"><Button variant="secondary" full href="#contact">このプランで相談 →</Button></div>
+        </article>
+        <article className="plan-card highlight">
+          <span className="ribbon">人気No.1</span>
+          <p className="plan-label">店舗サイトをしっかり整える</p>
+          <h3>スタンダード</h3>
+          <p className="price">100,000<small>円〜</small></p>
+          <p className="plan-note">店舗情報をしっかり整理し、予約・問い合わせにつながる基本サイトを作ります。</p>
+          <ul className="plan-features">
+            <li>3〜5ページ・合計14セクションまで</li>
+            <li>予約システム連携</li>
+            <li>CMS / WordPress対応</li>
+            <li>SNS・予約サイト導線整理</li>
+            <li>公開時の動作確認まで実施</li>
+          </ul>
+          <div className="cta"><Button variant="primary" full href="#contact">このプランで相談 →</Button></div>
+        </article>
+        <article className="plan-card">
+          <p className="plan-label">集客施策までまとめて</p>
+          <h3>プレミアム</h3>
+          <p className="price">300,000<small>円〜</small></p>
+          <p className="plan-note">サイト制作に加え、GoogleマップやSNSまで含めた集客導線を整えます。</p>
+          <ul className="plan-features">
+            <li>本格サイト + LP1本</li>
+            <li>MEO初期整備</li>
+            <li>口コミ依頼導線の設計</li>
+            <li>SNS/広告用コピー作成</li>
+            <li>月次アクセス解析レポート</li>
+          </ul>
+          <div className="cta"><Button variant="secondary" full href="#contact">このプランで相談 →</Button></div>
+        </article>
+      </div>
+    </Container>
+  </section>
+);
+
+// ========================================================================
+// COMPARE TABLE — Shishinote vs Freelance vs Big agency
+// ========================================================================
+const Compare = () => (
+  <section className="section" id="compare">
+    <Container>
+      <SectionHead
+        center
+        eyebrow="COMPARISON"
+        title={<>他社との<span className="accent">違い</span>を、正直に比較</>}
+        lead="フリーランス・大手制作会社それぞれに良さがあります。シシノテが向く方の特徴を見極めてください。"
+      />
+      <div className="compare-wrap">
+        <table className="compare-table">
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th className="us">
+                シシノテ
+                <span className="sub">小〜中規模店舗特化</span>
+              </th>
+              <th>個人フリーランス</th>
+              <th>大手制作会社</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>初期費用の目安</td>
+              <td className="us">3万円〜30万円</td>
+              <td>5万円〜30万円</td>
+              <td className="bad">50万円〜200万円</td>
+            </tr>
+            <tr>
+              <td>素材（写真・原稿）の準備</td>
+              <td className="us">お任せ可・補正/原稿作成込み</td>
+              <td className="bad">基本ご自身で用意</td>
+              <td>別途料金で対応</td>
+            </tr>
+            <tr>
+              <td>マーケ視点の構成設計</td>
+              <td className="us">標準対応・専任ディレクター</td>
+              <td className="bad">対応者によりばらつき</td>
+              <td>標準対応</td>
+            </tr>
+            <tr>
+              <td>公開までの期間</td>
+              <td className="us">2〜3週間が目安</td>
+              <td>2〜4週間</td>
+              <td className="bad">2〜4ヶ月</td>
+            </tr>
+            <tr>
+              <td>追加料金の扱い</td>
+              <td className="us">見積もり時に事前明示</td>
+              <td className="bad">対応者により差が大きい</td>
+              <td>契約に準ずる</td>
+            </tr>
+            <tr>
+              <td>公開後の運用相談</td>
+              <td className="us">月額5,000円〜・解約自由</td>
+              <td>都度見積もり</td>
+              <td className="bad">年間契約が多い</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </Container>
+  </section>
+);
+
+// ========================================================================
+// PORTFOLIO — tabbed gallery by industry
+// ========================================================================
+const PORTFOLIO_DATA = {
+  all: [],
+  clinic: [
+    { img: "assets/portfolio/clinic-fv.png", tags: ["歯科", "新規開業"], name: "青葉デンタルクリニック", desc: "初診導線と予約ボタンを整理し、土曜診療の相談につながりやすい構成例。" },
+    { img: "assets/demos/clinic-room.png",   tags: ["クリニック", "刷新"], name: "みどりの歯科クリニック",   desc: "架空医院の刷新例。家族で相談できる温度感を写真と構成で表現。" },
+  ],
+  cafe: [
+    { img: "assets/portfolio/cafe-fv.png",   tags: ["カフェ", "開業告知"], name: "MADOBA COFFEE & BAKE", desc: "オープン前の告知やメニュー訴求を想定し、SNSから来店へつなげる導線例。" },
+    { img: "assets/demos/cafe-menu.png",     tags: ["飲食店", "メニュー"], name: "町のカフェ「あかり」",   desc: "スマホ写真を補正して使う想定で、料理の魅力が伝わる見せ方を表現。" },
+  ],
+  fitness: [
+    { img: "assets/portfolio/fitness-fv.png", tags: ["パーソナルジム", "体験予約"], name: "LIFT BASE AOYAMA",  desc: "体験予約前の不安を減らすため、料金・設備・トレーナー情報を整理した構成例。" },
+    { img: "assets/demos/fitness-studio.png", tags: ["ジム", "ブランディング"], name: "スタジオ MOVE",        desc: "黒×ライムの世界観で、体験申し込みまでの流れをわかりやすく見せる提案例。" },
+  ],
+};
+
+const Portfolio = () => {
+  const [tab, setTab] = React.useState("clinic");
+  const items = PORTFOLIO_DATA[tab] || [];
+  const tabs = [
+    { key: "clinic",  label: "クリニック・歯科" },
+    { key: "cafe",    label: "カフェ・飲食店" },
+    { key: "fitness", label: "パーソナルジム" },
+  ];
+  return (
+    <section className="section band" id="proof">
+      <Container>
+        <SectionHead
+          center
+          eyebrow="SAMPLE DESIGNS"
+          title={<>業種別・<span className="accent">制作イメージ</span></>}
+          lead="実際の受注実績ではなく、業種ごとの提案例として作成したサンプルです。クリニック / 飲食 / ジムなど、見込み客の心理に合わせた構成を確認できます。"
+        />
+        <div className="tabs">
+          {tabs.map(t => (
+            <button
+              key={t.key}
+              type="button"
+              className={`tab${tab === t.key ? " active" : ""}`}
+              onClick={() => setTab(t.key)}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+        <div className="portfolio-grid">
+          {items.map((it, i) => (
+            <article key={i} className="portfolio-item">
+              <div className="portfolio-img"><img src={it.img} alt={it.name} /></div>
+              <div className="portfolio-meta">
+                <div className="tag-row">{it.tags.map((t, j) => <span key={j}>{t}</span>)}</div>
+                <h4>{it.name}</h4>
+                <p>{it.desc}</p>
+              </div>
+            </article>
+          ))}
+          <article className="portfolio-item" style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: 40, textAlign: "center" }}>
+            <div>
+              <p style={{ margin: 0, fontSize: 14, fontWeight: 900, color: "var(--ink)", marginBottom: 12 }}>このカテゴリで<br/>もっと見たい方は</p>
+              <Button variant="primary" href="#contact">事例集をリクエスト →</Button>
+            </div>
+          </article>
+        </div>
+      </Container>
+    </section>
+  );
+};
+
+// ========================================================================
+// GUARANTEE
+// ========================================================================
+const Guarantee = () => (
+  <section className="section">
+    <Container>
+      <SectionHead
+        center
+        eyebrow="OUR PROMISE"
+        title={<>安心して任せていただくための<br/><span className="accent">3つの約束</span></>}
+      />
+      <div className="guarantee-grid">
+        <article className="guarantee-card">
+          <span className="seal">事前<br/>明示</span>
+          <h3>追加料金は<br/>事前に必ずご相談</h3>
+          <p>見積もり段階で発生しうる費用を事前にご案内し、ご了承いただいた範囲を超える追加請求は行いません。「気づいたら高くなっていた」を防ぐ、明朗会計を約束します。</p>
+        </article>
+        <article className="guarantee-card">
+          <span className="seal">伴走型<br/>制作</span>
+          <h3>素材ゼロから<br/>公開まで一気通貫</h3>
+          <p>写真補正・撮影指示書・原稿のたたき台までシシノテで整えます。「写真が無い」「文章が書けない」状態でも、店舗側の準備負担を最小限にして公開まで進めます。</p>
+        </article>
+        <article className="guarantee-card">
+          <span className="seal">縛り<br/>なし</span>
+          <h3>公開後の保守は<br/>必要なときだけ</h3>
+          <p>月額保守は5,000円〜・解約自由。年間契約や違約金はありません。「公開後しばらく動きが無い時期」は止めて、繁忙期だけ再開する使い方もできます。</p>
+        </article>
+      </div>
+    </Container>
+  </section>
+);
+
+// ========================================================================
+// FLOW
+// ========================================================================
+const Flow = () => (
+  <section className="section band" id="flow">
+    <Container>
+      <SectionHead
+        center
+        eyebrow="FLOW"
+        title={<>無料相談から<span className="accent">公開まで</span>の流れ</>}
+        lead="店舗側にお願いするのは、ヒアリングと2回の確認だけ。残りはすべてシシノテで進めます。"
+      />
+      <ol className="flow-list">
+        <li>
+          <span className="step-num">STEP 01</span>
+          <span className="duration">当日〜翌営業日</span>
+          <h3>無料相談</h3>
+          <p>業種・必要なページ・素材の状況を確認。概算と進め方をお伝えします。</p>
+        </li>
+        <li>
+          <span className="step-num">STEP 02</span>
+          <span className="duration">2〜3日</span>
+          <h3>構成提案</h3>
+          <p>誰に何を伝えるかを整理し、ページ構成・予約導線・素材リストを決定。</p>
+        </li>
+        <li>
+          <span className="step-num">STEP 03</span>
+          <span className="duration">1〜2週間</span>
+          <h3>制作・整え</h3>
+          <p>スマホ写真と箇条書きをWeb向けに整え、デザイン・コピー・公開設定を進めます。</p>
+        </li>
+        <li>
+          <span className="step-num">STEP 04</span>
+          <span className="duration">公開後</span>
+          <h3>公開・改善</h3>
+          <p>公開時の動作確認と、次に見直すとよいポイントをご提案します。</p>
+        </li>
+      </ol>
+    </Container>
+  </section>
+);
+
+// ========================================================================
+// FAQ
+// ========================================================================
+const FAQItem = ({ q, a }) => <details><summary>{q}</summary><p>{a}</p></details>;
+const FAQ = () => (
+  <section className="section" id="faq">
+    <Container>
+      <SectionHead
+        center
+        eyebrow="FAQ"
+        title={<>よくある<span className="accent">ご質問</span></>}
+      />
+      <div className="faq-grid">
+        <FAQItem q="写真や文章がなくても本当に依頼できますか？" a="可能です。スマホ写真の補正、撮影指示書の作成、ヒアリングからの文章作成まで、ご状況に合わせて進め方をご提案します。素材ゼロからのご依頼が全体の約7割です。" />
+        <FAQItem q="無料デモサイトとは何ですか？" a="ご相談前に、業種・店舗名・特徴をお伝えいただければ、シシノテで1ページのデモサイトを無料で制作します。契約義務はなく、気に入らなければ破棄でOKです。" />
+        <FAQItem q="公開までどれくらいかかりますか？" a="LP1枚で2〜3週間、3〜5ページの基本サイトで4〜6週間が目安です。素材の準備状況や修正のラリーによって前後しますが、シシノテ側で巻き取れる作業が多いので、店舗側の負担は少なく進められます。" />
+        <FAQItem q="修正回数に上限はありますか？" a="プランごとに目安の回数を事前にご案内します。回数を超える大幅な修正や、構成自体の変更が必要な場合は、別途お見積もりとなることがあります。ご了承いただいた範囲を超える追加請求は行いません。" />
+        <FAQItem q="スマホ写真をどこまで整えられますか？" a="明るさ、色味、傾き、余計な写り込み、Web用の切り出しなどを整えられます。実物と違う設備や商品を追加するような、誤認につながる加工は行いません。" />
+        <FAQItem q="予約システムも作れますか？" a="既存の予約サイト、LINE、Googleフォームなどとの連携を基本にします。独自予約システムが必要な場合は別見積もりです。" />
+        <FAQItem q="公開後の更新は誰が行いますか？" a="月額保守プラン（5,000円〜）でシシノテが対応、または操作レクチャー込みで店舗様ご自身で更新、どちらも選べます。プランは解約自由です。" />
+        <FAQItem q="エリアはどこまで対応していますか？" a="基本はオンラインで全国対応します。出張撮影は別途お見積もりで、首都圏・関西圏は対応実績があります。それ以外のエリアもまずはご相談ください。" />
+      </div>
+    </Container>
+  </section>
+);
+
+// ========================================================================
+// CONTACT
+// ========================================================================
+const ContactForm = () => {
+  const [busy, setBusy] = React.useState(false);
+  const [status, setStatus] = React.useState({ state: "", msg: "" });
+
+  const submit = async (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const email = String(formData.get("email") || "").trim();
+    const emailConfirm = String(formData.get("emailConfirm") || "").trim();
+    const topic = String(formData.get("topic") || "").trim();
+    const freeMessage = String(formData.get("messageBody") || "").trim();
+
+    if (email !== emailConfirm) {
+      setStatus({ state: "error", msg: "メールアドレスが一致していません。確認用メールアドレスを見直してください。" });
+      return;
+    }
+
+    const payload = {
+      organization: String(formData.get("organization") || "").trim(),
+      name: String(formData.get("name") || "").trim(),
+      email,
+      emailConfirm,
+      phone: String(formData.get("phone") || "").trim(),
+      websiteUrl: String(formData.get("websiteUrl") || "").trim(),
+      message: [
+        topic && `ご希望のご相談内容: ${topic}`,
+        freeMessage && `詳細:\n${freeMessage}`
+      ].filter(Boolean).join("\n\n")
+    };
+
+    setBusy(true);
+    setStatus({ state: "", msg: "送信中です。少しだけお待ちください。" });
+
+    try {
+      const response = await fetch(new URL("/api/contact", window.location.href).href, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.message || "送信に失敗しました。時間をおいて再度お試しください。");
+      }
+
+      form.reset();
+      window.location.assign("thanks.html");
+    } catch (error) {
+      setStatus({
+        state: "error",
+        msg: error instanceof Error ? error.message : "送信に失敗しました。時間をおいて再度お試しください。"
+      });
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <section className="section contact" id="contact">
+      <Container className="contact-layout">
+        <div>
+          <Eyebrow>FREE CONSULTATION</Eyebrow>
+          <h2 className="section-title">
+            まずは<span style={{ background: "linear-gradient(180deg, transparent 60%, rgba(247,183,51,.4) 60%)", padding: "0 4px" }}>30秒</span>の<br/>
+            無料相談から。
+          </h2>
+          <p style={{ marginTop: 22 }}>
+            店舗名、業種、作りたいページ、写真や原稿の準備状況をお聞きします。<br/>
+            必要な範囲と概算費用を整理してお返しします。営業電話は一切ありません。
+          </p>
+          <ul className="contact-perks" style={{ margin: 0, padding: 0, listStyle: "none" }}>
+            <li>原則1〜2営業日以内にご返信</li>
+            <li>無料デモサイト制作（希望時）</li>
+            <li>その場で概算費用がわかる簡単見積もりつき</li>
+            <li>断りやすい・営業電話なし</li>
+          </ul>
+        </div>
+        <form className="contact-form" onSubmit={submit}>
+          <input type="text" name="_gotcha" tabIndex="-1" autoComplete="off" aria-hidden="true" hidden />
+          <label>
+            <span className="field-label">店舗名・法人名</span>
+            <span className="field-required">必須</span>
+            <input type="text" name="organization" autoComplete="organization" required />
+          </label>
+          <label>
+            <span className="field-label">お名前</span>
+            <span className="field-required">必須</span>
+            <input type="text" name="name" autoComplete="name" required />
+          </label>
+          <label>
+            <span className="field-label">メールアドレス</span>
+            <span className="field-required">必須</span>
+            <input type="email" name="email" autoComplete="email" inputMode="email" required />
+          </label>
+          <label>
+            <span className="field-label">メールアドレス確認</span>
+            <span className="field-required">必須</span>
+            <input type="email" name="emailConfirm" autoComplete="email" inputMode="email" required />
+          </label>
+          <label>
+            <span className="field-label">電話番号</span>
+            <input type="tel" name="phone" autoComplete="tel" inputMode="tel" />
+          </label>
+          <label>
+            <span className="field-label">既存WEBサイト・SNSのURL等</span>
+            <input type="url" name="websiteUrl" placeholder="https://" inputMode="url" />
+          </label>
+          <label>
+            <span className="field-label">ご希望のご相談内容</span>
+            <select name="topic">
+              <option>無料デモサイトを依頼したい</option>
+              <option>料金プランの相談</option>
+              <option>既存サイトの刷新</option>
+              <option>新規開業に向けた制作</option>
+              <option>その他</option>
+            </select>
+          </label>
+          <label>
+            <span className="field-label">ご相談内容（任意）</span>
+            <textarea name="messageBody" rows="4" placeholder="業種・店舗エリア・現状のWeb有無など、わかる範囲でお書きください。" />
+          </label>
+          <p className="form-status" data-state={status.state} aria-live="polite">{status.msg}</p>
+          <Button type="submit" variant="primary" full disabled={busy}>
+            {busy ? "送信中..." : "1営業日以内に返信を受け取る →"}
+          </Button>
+          <p style={{ margin: 0, fontSize: 11, color: "var(--muted)", fontWeight: 700, textAlign: "center" }}>
+            送信いただいた情報は、ご相談対応のみに利用します。
+          </p>
+        </form>
+      </Container>
+    </section>
+  );
+};
+
+// ========================================================================
+// FOOTER
+// ========================================================================
+const Footer = () => (
+  <footer className="site-footer">
+    <div className="container footer-inner">
+      <a className="brand" href="#top">
+        <img src="assets/shishinote-logo-mark.png" alt="" style={{ width: 36, height: 36 }} />
+        <span>シシノテ</span>
+      </a>
+      <p>写真も原稿も、まるっと任せるWeb制作。</p>
+      <small className="footer-copy">© 2026 シシノテ</small>
+    </div>
+  </footer>
+);
+
+// ========================================================================
+// STICKY MOBILE CTA
+// ========================================================================
+const StickyCTA = () => (
+  <div className="sticky-cta">
+    <Button variant="secondary" href="#diagnose">簡単見積もり</Button>
+    <Button variant="primary" href="#contact">無料相談する →</Button>
+  </div>
+);
+
+window.Plans = Plans;
+window.Compare = Compare;
+window.Portfolio = Portfolio;
+window.Guarantee = Guarantee;
+window.Flow = Flow;
+window.FAQ = FAQ;
+window.ContactForm = ContactForm;
+window.Footer = Footer;
+window.StickyCTA = StickyCTA;
+
+
+  </script>
+
+  <script type="text/babel">
+    const App = () => {
+      return (
+        <React.Fragment>
+          <UrgencyBar enabled={true} />
+          <Header />
+          <main>
+            <Hero variant="A" />
+            <PainBar />
+            <Reasons />
+            <BeforeAfter />
+            <DiagnosticTool />
+            <Plans />
+            <Compare />
+            <Portfolio />
+            <Guarantee />
+            <Flow />
+            <FAQ />
+            <ContactForm />
+          </main>
+          <Footer />
+          <StickyCTA />
+        </React.Fragment>
+      );
+    };
+
+    const mount = () => {
+      if (!window.Header || !window.Hero || !window.Reasons || !window.BeforeAfter ||
+          !window.DiagnosticTool || !window.Plans) {
+        return setTimeout(mount, 40);
+      }
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    };
+    mount();
+  </script>
+</body>
 </html>
+
+
