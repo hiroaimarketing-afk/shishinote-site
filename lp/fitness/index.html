@@ -1,0 +1,1351 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ジム・フィットネス向けLP制作 | シシノテ</title>
+    <meta name="description" content="パーソナルジム、フィットネス、ピラティス、整体併設ジム向けに、体験予約につながるLP・Webサイトを制作します。写真や原稿が揃っていない状態から相談できます。">
+    <style>
+      :root {
+        --ink: #07111f;
+        --deep: #0d1624;
+        --deep-2: #10271f;
+        --green: #1f765c;
+        --lime: #b7ff2a;
+        --gold: #f9ba31;
+        --paper: #f7faf7;
+        --line: #d9e3dc;
+        --muted: #5b6675;
+        --white: #fff;
+        --radius: 20px;
+        --shadow: 0 24px 70px rgba(7, 17, 31, .16);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--paper);
+        overflow-x: hidden;
+      }
+      img { display: block; max-width: 100%; }
+      a { color: inherit; text-decoration: none; }
+      h1, h2, h3, p {
+        word-break: keep-all;
+        overflow-wrap: anywhere;
+        line-break: strict;
+      }
+      h1, h2, h3 { margin: 0; letter-spacing: 0; }
+      p { margin: 0; }
+      .container {
+        width: min(1120px, calc(100% - 48px));
+        margin-inline: auto;
+      }
+      .nowrap { white-space: nowrap; }
+      .line { display: block; }
+      .button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        min-height: 56px;
+        padding: 0 24px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 900;
+        letter-spacing: 0;
+      }
+      .button.primary {
+        background: var(--gold);
+        color: var(--ink);
+        box-shadow: 0 18px 38px rgba(249, 186, 49, .28);
+      }
+      .button.secondary {
+        background: rgba(255,255,255,.08);
+        color: var(--white);
+        border-color: rgba(255,255,255,.2);
+      }
+      .button.light {
+        background: var(--white);
+        color: var(--ink);
+        border-color: var(--line);
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 76px;
+        padding: 12px clamp(18px, 4vw, 56px);
+        background: rgba(247,250,247,.92);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--line);
+      }
+      .brand img { width: min(218px, 46vw); height: auto; }
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        font-weight: 800;
+        color: #344052;
+        font-size: 14px;
+      }
+      .site-nav a:hover { color: var(--green); }
+
+      .hero {
+        position: relative;
+        isolation: isolate;
+        background:
+          linear-gradient(90deg, rgba(246, 248, 247, .94) 0%, rgba(246, 248, 247, .86) 46%, rgba(246, 248, 247, .70) 100%),
+          url("../../assets/fitness-demo/consultation.png") center / cover no-repeat;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 -22% auto;
+        width: 46vw;
+        height: 46vw;
+        background: radial-gradient(circle, rgba(31,118,92,.2), transparent 66%);
+        z-index: -1;
+      }
+      .hero-inner {
+        min-height: calc(100svh - 76px);
+        padding: clamp(52px, 7vw, 92px) 0 clamp(42px, 6vw, 76px);
+        display: grid;
+        grid-template-columns: minmax(320px, 680px);
+        gap: clamp(34px, 4vw, 58px);
+        align-items: center;
+      }
+      .hero-copy {
+        display: grid;
+        gap: 24px;
+        max-width: 660px;
+      }
+      .eyebrow {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(31,118,92,.12);
+        color: var(--green);
+        font-weight: 900;
+        font-size: 14px;
+      }
+      .hero h1 {
+        font-size: clamp(42px, 4.75vw, 68px);
+        line-height: 1.08;
+        font-weight: 950;
+        max-width: 10.8em;
+      }
+      .hero h1 .accent { color: var(--green); }
+      .hero-lead {
+        max-width: 620px;
+        color: #263244;
+        font-size: clamp(17px, 1.6vw, 21px);
+        line-height: 1.95;
+        font-weight: 800;
+      }
+      .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+      .hero-points {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        max-width: 680px;
+      }
+      .hero-points span {
+        min-height: 68px;
+        display: grid;
+        place-items: center;
+        padding: 12px;
+        border: 1px solid rgba(31,118,92,.16);
+        border-radius: 16px;
+        background: rgba(255,255,255,.72);
+        font-weight: 900;
+        text-align: center;
+        color: var(--green);
+      }
+      .hero-visual {
+        position: relative;
+        min-height: 520px;
+        display: grid;
+        align-items: center;
+        justify-items: end;
+      }
+      .hero-demo {
+        position: relative;
+        display: grid;
+        place-items: center;
+        width: min(100%, 800px);
+      }
+      .hero-demo img {
+        width: 100%;
+        filter: drop-shadow(0 34px 70px rgba(7, 17, 31, .18));
+      }
+      .hero-photo {
+        position: relative;
+        overflow: hidden;
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+        background: var(--deep);
+      }
+      .hero-photo img {
+        width: 100%;
+        height: min(55vw, 620px);
+        min-height: 430px;
+        object-fit: cover;
+        filter: saturate(.98) contrast(1.05);
+      }
+      .hero-photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(7,17,31,.62), rgba(7,17,31,.12) 52%, rgba(7,17,31,.4));
+      }
+      .section { padding: clamp(64px, 8vw, 104px) 0; }
+      .section.dark {
+        background: linear-gradient(130deg, var(--deep), var(--deep-2));
+        color: var(--white);
+      }
+      .section-head {
+        display: grid;
+        gap: 14px;
+        margin-bottom: 34px;
+      }
+      .section-head.center {
+        text-align: left;
+        justify-items: start;
+      }
+      .section-title {
+        font-size: clamp(30px, 4.2vw, 52px);
+        line-height: 1.18;
+        font-weight: 950;
+        text-wrap: balance;
+      }
+      .section-title .line { display: block; }
+      .section-title .accent { color: var(--green); }
+      .dark .section-title .accent { color: var(--lime); }
+      .section-text {
+        max-width: 760px;
+        color: var(--muted);
+        font-weight: 750;
+        line-height: 1.9;
+        font-size: 16px;
+        text-align: left;
+        text-wrap: pretty;
+      }
+      .dark .section-text { color: rgba(255,255,255,.74); }
+
+      .pain-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .pain-card {
+        border-radius: var(--radius);
+        background: var(--white);
+        border: 1px solid var(--line);
+        padding: 22px;
+        box-shadow: 0 12px 34px rgba(7,17,31,.06);
+      }
+      .pain-card b {
+        display: inline-flex;
+        margin-bottom: 14px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #ffe9e2;
+        color: #d34f31;
+        font-size: 12px;
+      }
+      .pain-card h3 { font-size: 20px; line-height: 1.45; }
+      .pain-card p {
+        margin-top: 10px;
+        color: var(--muted);
+        line-height: 1.75;
+        font-weight: 700;
+      }
+
+      .point-layout {
+        display: grid;
+        grid-template-columns: minmax(260px, .8fr) minmax(0, 1.2fr);
+        gap: 42px;
+        align-items: start;
+      }
+      .point-sticky {
+        position: sticky;
+        top: 104px;
+        display: grid;
+        gap: 20px;
+      }
+      .point-photo {
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 20px 58px rgba(0,0,0,.24);
+      }
+      .point-photo img { aspect-ratio: 4 / 5; object-fit: cover; }
+      .point-list {
+        display: grid;
+        gap: 14px;
+      }
+      .point-item {
+        display: grid;
+        grid-template-columns: 58px 1fr;
+        gap: 18px;
+        padding: 22px;
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,.12);
+        background: rgba(255,255,255,.055);
+      }
+      .point-num {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--gold);
+        color: var(--ink);
+        font-weight: 950;
+      }
+      .point-item h3 {
+        color: var(--gold);
+        font-size: 20px;
+        line-height: 1.45;
+      }
+      .point-item p {
+        margin-top: 8px;
+        color: rgba(255,255,255,.76);
+        line-height: 1.85;
+        font-weight: 700;
+      }
+
+      .ba-slider {
+        --position: 50%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 26px;
+        border: 1px solid var(--line);
+        background: var(--white);
+        box-shadow: var(--shadow);
+        aspect-ratio: 16 / 9;
+        min-height: 360px;
+      }
+      .ba-slider img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .ba-slider .after-image {
+        clip-path: inset(0 0 0 var(--position));
+      }
+      .ba-label {
+        position: absolute;
+        top: 18px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(7,17,31,.82);
+        color: var(--white);
+        font-weight: 900;
+        font-size: 13px;
+        z-index: 4;
+      }
+      .ba-label.before { left: 18px; }
+      .ba-label.after {
+        right: 18px;
+        background: var(--green);
+      }
+      .ba-range {
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: ew-resize;
+      }
+      .ba-divider {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: var(--position);
+        z-index: 3;
+        width: 2px;
+        background: rgba(255,255,255,.94);
+        transform: translateX(-50%);
+        pointer-events: none;
+      }
+      .ba-handle {
+        position: absolute;
+        top: 50%;
+        left: var(--position);
+        z-index: 4;
+        display: grid;
+        place-items: center;
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        background: var(--white);
+        color: var(--ink);
+        box-shadow: 0 12px 34px rgba(7,17,31,.24);
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        font-weight: 950;
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .portfolio-item {
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: var(--white);
+        overflow: hidden;
+        box-shadow: 0 16px 48px rgba(7,17,31,.08);
+      }
+      .portfolio-img {
+        aspect-ratio: 16 / 10;
+        background: #edf4ef;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+      .portfolio-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 12px;
+      }
+      .portfolio-body {
+        display: grid;
+        gap: 10px;
+        padding: 20px;
+      }
+      .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+      .tag-row span {
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #e4f8ee;
+        color: var(--green);
+        font-weight: 900;
+        font-size: 12px;
+      }
+      .portfolio-body h3 { font-size: 24px; }
+      .portfolio-body p {
+        color: var(--muted);
+        font-weight: 750;
+        line-height: 1.7;
+      }
+      .portfolio-body strong { color: var(--green); }
+
+      .plan-table-wrap {
+        overflow-x: auto;
+        border-radius: 24px;
+        border: 1px solid rgba(31, 126, 106, .16);
+        background: var(--white);
+        box-shadow: var(--shadow);
+      }
+      .plan-table {
+        width: 100%;
+        min-width: 840px;
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+      .plan-table th,
+      .plan-table td {
+        padding: 18px 16px;
+        border-bottom: 1px solid var(--line);
+        border-right: 1px solid var(--line);
+        vertical-align: top;
+        text-align: center;
+      }
+      .plan-table th:first-child,
+      .plan-table td:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        width: 220px;
+        text-align: left;
+        background: #f7fbf8;
+        color: var(--deep);
+        font-weight: 950;
+      }
+      .plan-table thead th {
+        background: #f7fbf8;
+        color: var(--deep);
+      }
+      .plan-table thead th.featured-plan {
+        background: var(--deep);
+        color: var(--white);
+      }
+      .plan-table tr:last-child th,
+      .plan-table tr:last-child td { border-bottom: 0; }
+      .plan-table th:last-child,
+      .plan-table td:last-child { border-right: 0; }
+      .plan-name {
+        display: block;
+        font-size: 20px;
+        line-height: 1.35;
+        font-weight: 950;
+      }
+      .plan-price {
+        display: block;
+        margin-top: 8px;
+        color: var(--green);
+        font-size: 24px;
+        font-weight: 950;
+        letter-spacing: 0;
+      }
+      .featured-plan .plan-price { color: var(--gold); }
+      .plan-note {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.55;
+        font-weight: 800;
+      }
+      .featured-plan .plan-note { color: rgba(255,255,255,.78); }
+      .plan-table .yes,
+      .plan-table .no,
+      .plan-table .partial {
+        display: inline-grid;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        margin: 0 auto;
+        border-radius: 999px;
+        font-size: 18px;
+        font-weight: 950;
+      }
+      .plan-table tbody td {
+        color: var(--deep);
+        font-weight: 950;
+      }
+      .plan-table .yes {
+        background: rgba(31, 126, 106, .14);
+        color: var(--green);
+      }
+      .plan-table .partial {
+        background: rgba(252, 183, 45, .18);
+        color: #9b6900;
+      }
+      .plan-table .no {
+        background: rgba(82, 94, 112, .10);
+        color: #8792a3;
+      }
+      .plan-detail {
+        display: block;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.55;
+        font-weight: 800;
+      }
+
+      .flow-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .flow-card {
+        padding: 22px;
+        border-left: 4px solid var(--gold);
+        background: rgba(255,255,255,.08);
+      }
+      .flow-card span {
+        color: var(--gold);
+        font-weight: 950;
+      }
+      .flow-card h3 {
+        margin-top: 12px;
+        font-size: 20px;
+      }
+      .flow-card p {
+        margin-top: 10px;
+        color: rgba(255,255,255,.72);
+        line-height: 1.75;
+        font-weight: 700;
+      }
+
+      .faq-grid {
+        display: grid;
+        gap: 12px;
+        max-width: 860px;
+        margin-inline: auto;
+      }
+      details {
+        border-radius: 16px;
+        border: 1px solid var(--line);
+        background: var(--white);
+        padding: 18px 20px;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 950;
+        font-size: 18px;
+      }
+      details p {
+        margin-top: 12px;
+        color: var(--muted);
+        line-height: 1.8;
+        font-weight: 700;
+      }
+
+      .contact {
+        background: var(--deep);
+        color: var(--white);
+      }
+      .contact-layout {
+        display: grid;
+        grid-template-columns: minmax(0, .88fr) minmax(360px, .82fr);
+        gap: clamp(30px, 6vw, 70px);
+        align-items: start;
+      }
+      .contact .section-head {
+        margin-bottom: 0;
+      }
+      .contact .section-title {
+        color: var(--white);
+      }
+      .contact .section-title .accent {
+        color: var(--gold);
+      }
+      .contact .section-text {
+        color: rgba(255,255,255,.78);
+      }
+      .contact-perks {
+        display: grid;
+        gap: 12px;
+        margin: 26px 0 0;
+        padding: 26px 0 0;
+        border-top: 1px solid rgba(255,255,255,.14);
+        list-style: none;
+      }
+      .contact-perks li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        color: rgba(255,255,255,.9);
+        font-weight: 850;
+        line-height: 1.65;
+      }
+      .contact-perks li::before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        margin-top: 4px;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23f9ba31' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'><polyline points='4 11 8 15 16 6'/></svg>");
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .contact-form {
+        display: grid;
+        gap: 18px;
+        padding: clamp(24px, 3vw, 32px);
+        border-radius: 18px;
+        background: var(--white);
+        color: var(--ink);
+        box-shadow: 0 30px 78px rgba(0,0,0,.34);
+      }
+      .contact-form label {
+        display: grid;
+        gap: 8px;
+        font-weight: 900;
+      }
+      .field-label {
+        color: #08204a;
+        font-size: 13px;
+      }
+      .field-required {
+        width: fit-content;
+        padding: 2px 6px;
+        background: #fee4dc;
+        color: #d64a1f;
+        border-radius: 4px;
+        font-size: 10px;
+        font-weight: 950;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        min-height: 48px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 12px 14px;
+        font: inherit;
+        color: var(--ink);
+        background: var(--paper);
+      }
+      textarea {
+        resize: vertical;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: var(--green);
+        outline: 3px solid rgba(31, 118, 92, .18);
+      }
+      .form-status {
+        min-height: 1.5em;
+        margin: -4px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+      }
+      .form-status[data-state="success"] { color: var(--green); }
+      .form-status[data-state="error"] { color: #b42318; }
+      .contact-form .button {
+        width: 100%;
+        cursor: pointer;
+      }
+      .contact-form .button:disabled {
+        opacity: .68;
+        cursor: wait;
+      }
+      .form-note {
+        margin: 0;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: center;
+      }
+      .site-footer {
+        padding: 30px 0 90px;
+        background: var(--deep);
+        color: rgba(255,255,255,.68);
+      }
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        font-weight: 700;
+      }
+      .footer-inner img { width: 150px; }
+      .sticky-cta {
+        display: none;
+      }
+
+      @media (max-width: 920px) {
+        .site-nav { display: none; }
+        .hero-inner {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          gap: 34px;
+        }
+        .hero h1 {
+          max-width: 100%;
+          font-size: clamp(36px, 9.5vw, 58px);
+        }
+        .hero-photo img {
+          height: min(76vw, 560px);
+          min-height: 330px;
+        }
+        .pain-grid,
+        .point-layout,
+        .portfolio-grid,
+        .flow-grid {
+          grid-template-columns: 1fr;
+        }
+        .point-sticky { position: static; }
+        .point-photo img { aspect-ratio: 16 / 10; }
+      }
+
+      @media (max-width: 560px) {
+        .container { width: min(100% - 32px, 1120px); }
+        .site-header { min-height: 68px; padding: 10px 16px; }
+        .brand img { width: 162px; }
+        .hero {
+          background:
+            linear-gradient(180deg, rgba(246, 248, 247, .90) 0%, rgba(246, 248, 247, .82) 58%, rgba(246, 248, 247, .76) 100%),
+            url("../../assets/fitness-demo/consultation.png") 42% center / cover no-repeat;
+        }
+        .hero-inner { padding-top: 44px; }
+        .hero h1 {
+          font-size: clamp(31px, 9.3vw, 42px);
+          line-height: 1.13;
+        }
+        .hero-lead {
+          font-size: 16px;
+          line-height: 1.85;
+        }
+        .hero-actions .button {
+          width: 100%;
+        }
+        .hero-points { display: none; }
+        .hero-visual { min-height: 390px; }
+        .hero-photo img {
+          min-height: 320px;
+          height: 92vw;
+          object-position: center;
+        }
+        .hero-demo img {
+          width: min(100%, 520px);
+          max-width: none;
+        }
+        .contact-layout {
+          grid-template-columns: 1fr;
+        }
+        .section { padding: 56px 0; }
+        .section-title {
+          font-size: clamp(25px, 7.5vw, 34px);
+          line-height: 1.22;
+        }
+        .plan-table-wrap {
+          overflow: hidden;
+          border-radius: 18px;
+        }
+        .plan-table {
+          min-width: 0;
+          table-layout: fixed;
+        }
+        .plan-table th,
+        .plan-table td {
+          padding: 11px 4px;
+          font-size: 12px;
+          line-height: 1.45;
+        }
+        .plan-table th:first-child,
+        .plan-table td:first-child {
+          position: static;
+          width: 32%;
+          min-width: 0;
+          font-size: 10.5px;
+          line-height: 1.5;
+        }
+        .plan-table thead th:not(:first-child),
+        .plan-table tbody td {
+          width: 22.666%;
+        }
+        .plan-name {
+          font-size: 12px;
+          line-height: 1.35;
+        }
+        .plan-price {
+          margin-top: 5px;
+          font-size: 11px;
+          white-space: nowrap;
+        }
+        .plan-note {
+          display: none;
+        }
+        .plan-table .yes,
+        .plan-table .no,
+        .plan-table .partial {
+          width: 24px;
+          height: 24px;
+          font-size: 14px;
+        }
+        .ba-slider {
+          aspect-ratio: 4 / 5;
+          min-height: 360px;
+        }
+        .point-item { grid-template-columns: 1fr; }
+        .footer-inner {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .sticky-cta {
+          position: fixed;
+          z-index: 30;
+          left: 10px;
+          right: 10px;
+          bottom: 10px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+          padding: 8px;
+          border-radius: 999px;
+          background: rgba(255,255,255,.92);
+          border: 1px solid var(--line);
+          box-shadow: 0 18px 44px rgba(7,17,31,.18);
+        }
+        .sticky-cta .button {
+          min-height: 52px;
+          padding: 0 12px;
+          font-size: 14px;
+        }
+        .sticky-cta .button.secondary {
+          background: var(--white);
+          color: var(--ink);
+          border-color: var(--line);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="シシノテ トップへ">
+        <img src="../../assets/shishinote-logo-full.png" alt="シシノテ WEB SITE PRODUCTION">
+      </a>
+      <nav class="site-nav" aria-label="主要メニュー">
+        <a href="#points">制作ポイント</a>
+        <a href="#samples">制作イメージ</a>
+        <a href="#plans">料金プラン</a>
+        <a href="#flow">流れ</a>
+        <a href="#contact">無料相談</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">ジム・フィットネス向けWEBサイト制作</p>
+            <h1>
+              <span class="line accent">体験予約につながる</span>
+              <span class="line">ジム・フィットネス</span>
+              <span class="line">LP制作</span>
+            </h1>
+            <p class="hero-lead">料金、トレーナー、設備、初回体験の不安を整理し、見込み客が「ここなら相談できそう」と感じるWebサイトへ。写真や原稿が揃っていなくても、構成から一緒に整えます。</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#contact">まずは無料相談 →</a>
+              <a class="button light" href="#samples">制作イメージを見る</a>
+            </div>
+            <div class="hero-points" aria-label="対応範囲">
+              <span>LP 3万円〜</span>
+              <span>写真補正込み</span>
+              <span>原稿作成込み</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="pain-title">
+        <div class="container">
+          <div class="section-head center">
+            <p class="eyebrow">COMMON ISSUES</p>
+            <h2 class="section-title" id="pain-title">
+              <span class="line">ジムのWeb集客で、</span>
+              <span class="line"><span class="accent">予約前に離脱</span>される理由</span>
+            </h2>
+            <p class="section-text">フィットネス系のLPは、かっこよさだけでは体験予約につながりません。入会前の不安、料金の見え方、トレーナーとの相性、通いやすさを先に解消する設計が必要です。</p>
+          </div>
+          <div class="pain-grid">
+            <article class="pain-card">
+              <b>NG例①</b>
+              <h3>料金や入会後の流れが見えない</h3>
+              <p>入会金、月額費用が曖昧だと、比較検討段階で候補から外れやすくなります。</p>
+            </article>
+            <article class="pain-card">
+              <b>NG例②</b>
+              <h3>設備写真だけで人の温度感がない</h3>
+              <p>トレーナーがどう指導してくれるのか、初心者でも安心できるのかが伝わりにくくなります。</p>
+            </article>
+            <article class="pain-card">
+              <b>NG例③</b>
+              <h3>SNSから予約までの導線が遠い</h3>
+              <p>Instagramで興味を持っても、料金、場所、予約方法を探す手間があると離脱します。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dark" id="points" aria-labelledby="points-title">
+        <div class="container point-layout">
+          <div class="point-sticky">
+            <div class="section-head">
+              <p class="eyebrow">PRODUCTION POINTS</p>
+              <h2 class="section-title" id="points-title">
+                <span class="line">ジム・フィットネスで</span>
+                <span class="line"><span class="accent">重要な制作ポイント</span></span>
+              </h2>
+              <p class="section-text">体験予約までに必要な判断材料を、ページ上部から順番に整理します。</p>
+            </div>
+            <div class="point-photo">
+              <img src="../../assets/demos/fitness-studio.png" alt="パーソナルジムの設備とトレーニング空間">
+            </div>
+          </div>
+          <div class="point-list">
+            <article class="point-item">
+              <span class="point-num">01</span>
+              <div>
+                <h3>体験予約の不安を先に減らす</h3>
+                <p>初心者向け、運動経験者向け、短期集中など、誰に向いているかを早い段階で示します。</p>
+              </div>
+            </article>
+            <article class="point-item">
+              <span class="point-num">02</span>
+              <div>
+                <h3>料金・入会までの流れを比較しやすくする</h3>
+                <p>体験料金、月額、回数券、入会金、持ち物、当日の流れを整理し、問い合わせ前の迷いを減らします。</p>
+              </div>
+            </article>
+            <article class="point-item">
+              <span class="point-num">03</span>
+              <div>
+                <h3>トレーナーの専門性と相性を見せる</h3>
+                <p>資格や経歴だけでなく、指導方針、得意領域、初回カウンセリングの進め方まで伝えます。</p>
+              </div>
+            </article>
+            <article class="point-item">
+              <span class="point-num">04</span>
+              <div>
+                <h3>設備ではなく利用シーンを主役にする</h3>
+                <p>マシンだけの写真より、フォーム確認やカウンセリング、トレーニング中の様子を優先して信頼感を作ります。</p>
+              </div>
+            </article>
+            <article class="point-item">
+              <span class="point-num">05</span>
+              <div>
+                <h3>LINE・予約サイト・SNSを迷わず押せる配置にする</h3>
+                <p>スマホ閲覧を前提に、体験予約、LINE相談、Instagram、アクセス情報を見失わない導線にします。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="before-after" aria-labelledby="ba-title">
+        <div class="container">
+          <div class="section-head center">
+            <p class="eyebrow">PHOTO SUPPORT</p>
+            <h2 class="section-title" id="ba-title">スマホ写真も、<span class="accent">Web素材として整える</span></h2>
+            <p class="section-text">ジム内写真が暗い、広さが伝わらない、設備だけで人の気配がない。そうした素材も、Webで使える見せ方に整えます。</p>
+          </div>
+          <div class="ba-slider" data-before-after>
+            <img class="before-image" src="../../assets/demos/before-fitness-user-20260630.png" alt="補正前のジム内写真">
+            <img class="after-image" src="../../assets/demos/after-fitness.png" alt="補正後のジム内写真">
+            <span class="ba-label before">BEFORE</span>
+            <span class="ba-label after">AFTER</span>
+            <span class="ba-divider" aria-hidden="true"></span>
+            <span class="ba-handle" aria-hidden="true">↔</span>
+            <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="BeforeとAfterを比較">
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="samples" aria-labelledby="samples-title">
+        <div class="container">
+          <div class="section-head center">
+            <p class="eyebrow">SAMPLE DESIGNS</p>
+            <h2 class="section-title" id="samples-title">ジム向けの<span class="accent">制作イメージ</span></h2>
+          </div>
+          <div class="portfolio-grid">
+            <a class="portfolio-item" href="../../demos/fitness/" aria-label="LIFT BASE AOYAMAのデモページを見る">
+              <div class="portfolio-img">
+                <img src="../../assets/portfolio/fitness-fv.png" alt="LIFT BASE AOYAMA 制作イメージ">
+              </div>
+              <div class="portfolio-body">
+                <div class="tag-row"><span>パーソナルジム</span><span>体験予約</span></div>
+                <h3>LIFT BASE AOYAMA</h3>
+                <p>料金、設備、トレーナー情報を整理し、初回体験の不安を減らす構成例。<strong>デモを見る →</strong></p>
+              </div>
+            </a>
+            <a class="portfolio-item" href="../../demos/strata-tokyo/" aria-label="STRATA TOKYOのデモページを見る">
+              <div class="portfolio-img">
+                <img src="../../assets/portfolio/strata-tokyo-fv.png" alt="STRATA TOKYO 制作イメージ">
+              </div>
+              <div class="portfolio-body">
+                <div class="tag-row"><span>高級ジム</span><span>無料相談</span></div>
+                <h3>STRATA TOKYO</h3>
+                <p>完全個室・完全予約制の高級パーソナルジムを想定し、信頼感と成果訴求を前面に出した構成例。<strong>デモを見る →</strong></p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="plans" aria-labelledby="plans-title">
+        <div class="container">
+          <div class="section-head center">
+            <p class="eyebrow">PLAN</p>
+            <h2 class="section-title" id="plans-title">料金<span class="accent">プラン</span></h2>
+            <p class="section-text">下記は初期制作費の目安です。全プラン共通の基本対応を含めたうえで、ページ数・追加導線・集客支援の範囲で差が出ます。</p>
+          </div>
+          <div class="plan-table-wrap" aria-label="料金プラン比較表">
+            <table class="plan-table">
+              <thead>
+                <tr>
+                  <th scope="col">対応領域</th>
+                  <th scope="col">
+                    <span class="plan-name">ミニマムLP</span>
+                    <span class="plan-price">30,000円〜</span>
+                    <span class="plan-note">まずは体験予約ページから</span>
+                  </th>
+                  <th scope="col" class="featured-plan">
+                    <span class="plan-name">スタンダード</span>
+                    <span class="plan-price">100,000円〜</span>
+                    <span class="plan-note">予約前の不安まで解消</span>
+                  </th>
+                  <th scope="col">
+                    <span class="plan-name">プレミアム</span>
+                    <span class="plan-price">300,000円〜</span>
+                    <span class="plan-note">集客施策までまとめて支援</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">ページ数</th>
+                  <td>1ページLP</td>
+                  <td>3〜5ページ</td>
+                  <td>3〜5ページ + LP1本</td>
+                </tr>
+                <tr>
+                  <th scope="row">セクション数</th>
+                  <td>5セクションまで</td>
+                  <td>合計14セクションまで</td>
+                  <td>合計20セクションまで</td>
+                </tr>
+                <tr>
+                  <th scope="row">予約/LINE/SNS連携</th>
+                  <td><span class="yes" aria-label="対応">○</span></td>
+                  <td><span class="yes" aria-label="対応">○</span></td>
+                  <td><span class="yes" aria-label="対応">○</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">スマホ対応・基本SEO</th>
+                  <td><span class="yes" aria-label="対応">○</span></td>
+                  <td><span class="yes" aria-label="対応">○</span></td>
+                  <td><span class="yes" aria-label="対応">○</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">写真・原稿作成</th>
+                  <td><span class="yes" aria-label="対応">○</span></td>
+                  <td><span class="yes" aria-label="対応">○</span></td>
+                  <td><span class="yes" aria-label="対応">○</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">MEO/Googleマップ設定代行</th>
+                  <td><span class="no" aria-label="非対応">×</span></td>
+                  <td><span class="no" aria-label="非対応">×</span></td>
+                  <td><span class="yes" aria-label="対応">○</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dark" id="flow" aria-labelledby="flow-title">
+        <div class="container">
+          <div class="section-head center">
+            <p class="eyebrow">FLOW</p>
+            <h2 class="section-title" id="flow-title">写真と箇条書きから、<span class="accent">公開まで進めます</span></h2>
+            <p class="section-text">制作前に必要な素材や確認事項も、こちらで整理します。遠方の店舗でも進めやすい流れです。</p>
+          </div>
+          <div class="flow-grid">
+            <article class="flow-card">
+              <span>01</span>
+              <h3>無料相談</h3>
+              <p>業種、目標、現在の集客導線、必要なページを確認します。</p>
+            </article>
+            <article class="flow-card">
+              <span>02</span>
+              <h3>構成提案</h3>
+              <p>料金、体験予約、トレーナー紹介など掲載順を設計します。</p>
+            </article>
+            <article class="flow-card">
+              <span>03</span>
+              <h3>制作</h3>
+              <p>写真補正、文章作成、デザイン、スマホ表示まで整えます。</p>
+            </article>
+            <article class="flow-card">
+              <span>04</span>
+              <h3>公開・改善</h3>
+              <p>公開後の更新やサイト改善は必要に応じて月額対応できます。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="faq-title">
+        <div class="container">
+          <div class="section-head center">
+            <p class="eyebrow">FAQ</p>
+            <h2 class="section-title" id="faq-title">よくある質問</h2>
+          </div>
+          <div class="faq-grid">
+            <details>
+              <summary>トレーニング中の写真がなくても依頼できますか？</summary>
+              <p>可能です。まずは設備写真やスマホで撮った店内写真から始め、必要な写真の撮り方リストや構図案もお渡しできます。</p>
+            </details>
+            <details>
+              <summary>予約サイトやLINEへの導線も入れられますか？</summary>
+              <p>可能です。既存の予約システム、LINE、Instagram、Googleマップへの導線を整理して配置します。</p>
+            </details>
+            <details>
+              <summary>ピラティスや整体併設ジムでも対応できますか？</summary>
+              <p>対応できます。業種ごとに来店前の不安や判断材料が変わるため、メニューや初回導線に合わせて構成を調整します。</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div class="container contact-layout">
+          <div>
+            <div class="section-head">
+              <p class="eyebrow">FREE CONSULTATION</p>
+              <h2 class="section-title">まずは<span class="accent">30秒</span>の<br>無料相談から。</h2>
+              <p class="section-text">店舗名、現在のSNSやWeb、体験予約で増やしたい導線を教えてください。ジム・フィットネス向けに必要な範囲と概算費用を整理してお返しします。</p>
+            </div>
+            <ul class="contact-perks">
+              <li>体験予約、LINE、予約サイトへの導線を確認</li>
+              <li>料金表、トレーナー紹介、設備写真の見せ方を整理</li>
+              <li>原則1〜2営業日以内にご返信</li>
+              <li>営業電話なし。断りやすい無料相談です</li>
+            </ul>
+          </div>
+          <form class="contact-form" action="../../api/contact" method="post" data-contact-form>
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" hidden>
+            <label>
+              <span class="field-label">店舗名・法人名</span>
+              <span class="field-required">必須</span>
+              <input type="text" name="organization" autocomplete="organization" required>
+            </label>
+            <label>
+              <span class="field-label">お名前</span>
+              <span class="field-required">必須</span>
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label>
+              <span class="field-label">メールアドレス</span>
+              <span class="field-required">必須</span>
+              <input type="email" name="email" autocomplete="email" inputmode="email" required>
+            </label>
+            <label>
+              <span class="field-label">メールアドレス確認</span>
+              <span class="field-required">必須</span>
+              <input type="email" name="emailConfirm" autocomplete="email" inputmode="email" required>
+            </label>
+            <label>
+              <span class="field-label">電話番号</span>
+              <input type="tel" name="phone" autocomplete="tel" inputmode="tel">
+            </label>
+            <label>
+              <span class="field-label">既存WEBサイト・SNSのURL等</span>
+              <input type="url" name="websiteUrl" placeholder="https://" inputmode="url">
+            </label>
+            <label>
+              <span class="field-label">ご希望のご相談内容</span>
+              <select name="topic">
+                <option>体験予約につながるLPを作りたい</option>
+                <option>料金表や入会導線を整理したい</option>
+                <option>既存サイトをジム向けに刷新したい</option>
+                <option>LINE・予約サイト・SNS導線を整えたい</option>
+                <option>トレーナー紹介や実績の見せ方を相談したい</option>
+                <option>その他</option>
+              </select>
+            </label>
+            <label>
+              <span class="field-label">ご相談内容（任意）</span>
+              <textarea name="messageBody" rows="4" placeholder="店舗エリア、ジムの種類、現在の集客導線、増やしたい予約、写真や原稿の準備状況などを可能な範囲でお書きください。"></textarea>
+            </label>
+            <p class="form-status" data-form-status aria-live="polite"></p>
+            <button class="button primary" type="submit">相談内容を送信 →</button>
+            <p class="form-note">送信いただいた情報は、ご相談対応のみに利用します。</p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <img src="../../assets/shishinote-logo-full.png" alt="シシノテ">
+        <p>© シシノテ. 写真も原稿も、まるっと任せるWeb制作。</p>
+      </div>
+    </footer>
+
+    <div class="sticky-cta" aria-label="固定問い合わせ導線">
+      <a class="button secondary" href="#samples">制作例</a>
+      <a class="button primary" href="#contact">無料相談 →</a>
+    </div>
+    <script>
+      document.querySelectorAll('[data-before-after]').forEach((slider) => {
+        const range = slider.querySelector('.ba-range');
+        const update = () => slider.style.setProperty('--position', `${range.value}%`);
+        range.addEventListener('input', update);
+        update();
+      });
+
+      const contactForm = document.querySelector('[data-contact-form]');
+      if (contactForm instanceof HTMLFormElement) {
+        const status = contactForm.querySelector('[data-form-status]');
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+
+        const setStatus = (message, state) => {
+          if (!(status instanceof HTMLElement)) return;
+          status.textContent = message;
+          if (state) {
+            status.dataset.state = state;
+          } else {
+            delete status.dataset.state;
+          }
+        };
+
+        contactForm.addEventListener('submit', async (event) => {
+          event.preventDefault();
+
+          const formData = new FormData(contactForm);
+          const email = String(formData.get('email') || '').trim();
+          const emailConfirm = String(formData.get('emailConfirm') || '').trim();
+          const topic = String(formData.get('topic') || '').trim();
+          const freeMessage = String(formData.get('messageBody') || '').trim();
+
+          if (formData.get('_gotcha')) return;
+
+          if (email !== emailConfirm) {
+            setStatus('メールアドレスが一致していません。確認用メールアドレスを見直してください。', 'error');
+            return;
+          }
+
+          const payload = {
+            organization: String(formData.get('organization') || '').trim(),
+            name: String(formData.get('name') || '').trim(),
+            email,
+            emailConfirm,
+            phone: String(formData.get('phone') || '').trim(),
+            websiteUrl: String(formData.get('websiteUrl') || '').trim(),
+            message: [
+              topic && `フィットネスLP相談内容: ${topic}`,
+              freeMessage && `詳細:\n${freeMessage}`
+            ].filter(Boolean).join('\n\n')
+          };
+
+          if (submitButton instanceof HTMLButtonElement) {
+            submitButton.disabled = true;
+          }
+
+          setStatus('送信中です。少しだけお待ちください。', '');
+
+          try {
+            const endpoint = new URL(contactForm.getAttribute('action') || '../../api/contact', window.location.href).href;
+            const response = await fetch(endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            const data = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+              throw new Error(data.message || '送信に失敗しました。時間をおいて再度お試しください。');
+            }
+
+            contactForm.reset();
+            window.location.assign('../../thanks.html');
+          } catch (error) {
+            setStatus(error instanceof Error ? error.message : '送信に失敗しました。時間をおいて再度お試しください。', 'error');
+          } finally {
+            if (submitButton instanceof HTMLButtonElement) {
+              submitButton.disabled = false;
+            }
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

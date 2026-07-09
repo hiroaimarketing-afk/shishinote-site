@@ -746,52 +746,69 @@ const Plans = () => (
         center
         eyebrow="PRICING"
         title={<><span className="accent">3万円</span>から、料金は<span className="hl">完全明朗</span></>}
-        lead="初期制作費でサイトを公開できる状態まで整えます。公開後の更新は必要なときだけ。追加料金は事前明示が原則です。"
+        lead="初期制作費でサイトを公開できる状態まで整えます。全プラン共通の基本対応を含めたうえで、ページ数・追加導線・集客支援の範囲で差が出ます。"
       />
-      <div className="plan-grid">
-        <article className="plan-card">
-          <p className="plan-label">まずはお手軽に</p>
-          <h3>ミニマム（LP1枚）</h3>
-          <p className="price">30,000<small>円〜</small></p>
-          <p className="plan-note">1ページで、お店の魅力と問い合わせ導線をシンプルに整えます。</p>
-          <ul className="plan-features">
-            <li>1ページLP・5セクションまで</li>
-            <li>スマホ写真の簡易補正</li>
-            <li>問い合わせフォーム</li>
-            <li>Googleマップ埋め込み</li>
-            <li>公開設定までシシノテで完結</li>
-          </ul>
-          <div className="cta"><Button variant="secondary" full href="#contact">このプランで相談 →</Button></div>
-        </article>
-        <article className="plan-card highlight">
-          <span className="ribbon">人気No.1</span>
-          <p className="plan-label">店舗サイトをしっかり整える</p>
-          <h3>スタンダード</h3>
-          <p className="price">100,000<small>円〜</small></p>
-          <p className="plan-note">店舗情報をしっかり整理し、予約・問い合わせにつながる基本サイトを作ります。</p>
-          <ul className="plan-features">
-            <li>3〜5ページ・合計14セクションまで</li>
-            <li>予約システム連携</li>
-            <li>CMS / WordPress対応</li>
-            <li>SNS・予約サイト導線整理</li>
-            <li>公開時の動作確認まで実施</li>
-          </ul>
-          <div className="cta"><Button variant="primary" full href="#contact">このプランで相談 →</Button></div>
-        </article>
-        <article className="plan-card">
-          <p className="plan-label">集客施策までまとめて</p>
-          <h3>プレミアム</h3>
-          <p className="price">300,000<small>円〜</small></p>
-          <p className="plan-note">サイト制作に加え、GoogleマップやSNSまで含めた集客導線を整えます。</p>
-          <ul className="plan-features">
-            <li>本格サイト + LP1本</li>
-            <li>MEO初期整備</li>
-            <li>口コミ依頼導線の設計</li>
-            <li>SNS/広告用コピー作成</li>
-            <li>月次アクセス解析レポート</li>
-          </ul>
-          <div className="cta"><Button variant="secondary" full href="#contact">このプランで相談 →</Button></div>
-        </article>
+      <div className="plan-table-wrap" aria-label="料金プラン比較表">
+        <table className="plan-table">
+          <thead>
+            <tr>
+              <th scope="col">対応領域</th>
+              <th scope="col">
+                <span className="plan-table-name">ミニマムLP</span>
+                <span className="plan-table-price">30,000円〜</span>
+                <span className="plan-table-note">まずは体験予約ページから</span>
+              </th>
+              <th scope="col" className="featured-plan">
+                <span className="plan-table-name">スタンダード</span>
+                <span className="plan-table-price">100,000円〜</span>
+                <span className="plan-table-note">予約前の不安まで解消</span>
+              </th>
+              <th scope="col">
+                <span className="plan-table-name">プレミアム</span>
+                <span className="plan-table-price">300,000円〜</span>
+                <span className="plan-table-note">集客施策までまとめて支援</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">ページ数</th>
+              <td>1ページLP</td>
+              <td>3〜5ページ</td>
+              <td>3〜5ページ + LP1本</td>
+            </tr>
+            <tr>
+              <th scope="row">セクション数</th>
+              <td>5セクションまで</td>
+              <td>合計14セクションまで</td>
+              <td>合計20セクションまで</td>
+            </tr>
+            <tr>
+              <th scope="row">予約/LINE/SNS連携</th>
+              <td><span className="yes" aria-label="対応">○</span></td>
+              <td><span className="yes" aria-label="対応">○</span></td>
+              <td><span className="yes" aria-label="対応">○</span></td>
+            </tr>
+            <tr>
+              <th scope="row">スマホ対応・基本SEO</th>
+              <td><span className="yes" aria-label="対応">○</span></td>
+              <td><span className="yes" aria-label="対応">○</span></td>
+              <td><span className="yes" aria-label="対応">○</span></td>
+            </tr>
+            <tr>
+              <th scope="row">写真・原稿作成</th>
+              <td><span className="yes" aria-label="対応">○</span></td>
+              <td><span className="yes" aria-label="対応">○</span></td>
+              <td><span className="yes" aria-label="対応">○</span></td>
+            </tr>
+            <tr>
+              <th scope="row">MEO/Googleマップ設定代行</th>
+              <td><span className="no" aria-label="非対応">×</span></td>
+              <td><span className="no" aria-label="非対応">×</span></td>
+              <td><span className="yes" aria-label="対応">○</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </Container>
   </section>
@@ -872,16 +889,14 @@ const Compare = () => (
 const PORTFOLIO_DATA = {
   all: [],
   clinic: [
-    { img: "assets/portfolio/clinic-fv.png", tags: ["歯科", "新規開業"], name: "青葉デンタルクリニック", desc: "初診導線と予約ボタンを整理し、土曜診療の相談につながりやすい構成例。" },
-    { img: "assets/demos/clinic-room.png",   tags: ["クリニック", "刷新"], name: "みどりの歯科クリニック",   desc: "架空医院の刷新例。家族で相談できる温度感を写真と構成で表現。" },
+    { img: "assets/portfolio/clinic-fv.png", tags: ["歯科", "新規開業"], name: "青葉デンタルクリニック", desc: "初診導線と予約ボタンを整理し、土曜診療の相談につながりやすい構成例。", url: "demos/clinic/" },
   ],
   cafe: [
-    { img: "assets/portfolio/cafe-fv.png",   tags: ["カフェ", "開業告知"], name: "MADOBA COFFEE & BAKE", desc: "オープン前の告知やメニュー訴求を想定し、SNSから来店へつなげる導線例。" },
-    { img: "assets/demos/cafe-menu.png",     tags: ["飲食店", "メニュー"], name: "町のカフェ「あかり」",   desc: "スマホ写真を補正して使う想定で、料理の魅力が伝わる見せ方を表現。" },
+    { img: "assets/portfolio/cafe-fv.png", tags: ["カフェ", "開業告知"], name: "MADOBA COFFEE & BAKE", desc: "オープン前の告知やメニュー訴求を想定し、SNSから来店へつなげる導線例。", url: "demos/cafe/" },
   ],
   fitness: [
-    { img: "assets/portfolio/fitness-fv.png", tags: ["パーソナルジム", "体験予約"], name: "LIFT BASE AOYAMA",  desc: "体験予約前の不安を減らすため、料金・設備・トレーナー情報を整理した構成例。" },
-    { img: "assets/demos/fitness-studio.png", tags: ["ジム", "ブランディング"], name: "スタジオ MOVE",        desc: "黒×ライムの世界観で、体験申し込みまでの流れをわかりやすく見せる提案例。" },
+    { img: "assets/portfolio/fitness-fv.png", tags: ["パーソナルジム", "体験予約"], name: "LIFT BASE AOYAMA", desc: "体験予約前の不安を減らすため、料金・設備・トレーナー情報を整理した構成例。", url: "demos/fitness/" },
+    { img: "assets/portfolio/strata-tokyo-fv.png", tags: ["高級ジム", "無料相談"], name: "STRATA TOKYO", desc: "完全個室・完全予約制の高級パーソナルジムを想定し、信頼感と成果訴求を前面に出した構成例。", url: "demos/strata-tokyo/" },
   ],
 };
 
@@ -900,7 +915,6 @@ const Portfolio = () => {
           center
           eyebrow="SAMPLE DESIGNS"
           title={<>業種別・<span className="accent">制作イメージ</span></>}
-          lead="実際の受注実績ではなく、業種ごとの提案例として作成したサンプルです。クリニック / 飲食 / ジムなど、見込み客の心理に合わせた構成を確認できます。"
         />
         <div className="tabs">
           {tabs.map(t => (
@@ -916,21 +930,15 @@ const Portfolio = () => {
         </div>
         <div className="portfolio-grid">
           {items.map((it, i) => (
-            <article key={i} className="portfolio-item">
+            <a key={i} className="portfolio-item" href={it.url} aria-label={`${it.name}のデモページを見る`}>
               <div className="portfolio-img"><img src={it.img} alt={it.name} /></div>
               <div className="portfolio-meta">
                 <div className="tag-row">{it.tags.map((t, j) => <span key={j}>{t}</span>)}</div>
                 <h4>{it.name}</h4>
                 <p>{it.desc}</p>
               </div>
-            </article>
+            </a>
           ))}
-          <article className="portfolio-item" style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: 40, textAlign: "center" }}>
-            <div>
-              <p style={{ margin: 0, fontSize: 14, fontWeight: 900, color: "var(--ink)", marginBottom: 12 }}>このカテゴリで<br/>もっと見たい方は</p>
-              <Button variant="primary" href="#contact">事例集をリクエスト →</Button>
-            </div>
-          </article>
         </div>
       </Container>
     </section>

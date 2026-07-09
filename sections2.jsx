@@ -136,16 +136,14 @@ const Compare = () => (
 const PORTFOLIO_DATA = {
   all: [],
   clinic: [
-    { img: "assets/portfolio/clinic-fv.png", tags: ["歯科", "新規開業"], name: "青葉デンタルクリニック", desc: "初診導線と予約ボタンを整理し、土曜診療の相談につながりやすい構成例。" },
-    { img: "assets/demos/clinic-room.png",   tags: ["クリニック", "刷新"], name: "みどりの歯科クリニック",   desc: "架空医院の刷新例。家族で相談できる温度感を写真と構成で表現。" },
+    { img: "assets/portfolio/clinic-fv.png", tags: ["歯科", "新規開業"], name: "青葉デンタルクリニック", desc: "初診導線と予約ボタンを整理し、土曜診療の相談につながりやすい構成例。", url: "demos/clinic/" },
   ],
   cafe: [
-    { img: "assets/portfolio/cafe-fv.png",   tags: ["カフェ", "開業告知"], name: "MADOBA COFFEE & BAKE", desc: "オープン前の告知やメニュー訴求を想定し、SNSから来店へつなげる導線例。" },
-    { img: "assets/demos/cafe-menu.png",     tags: ["飲食店", "メニュー"], name: "町のカフェ「あかり」",   desc: "スマホ写真を補正して使う想定で、料理の魅力が伝わる見せ方を表現。" },
+    { img: "assets/portfolio/cafe-fv.png", tags: ["カフェ", "開業告知"], name: "MADOBA COFFEE & BAKE", desc: "オープン前の告知やメニュー訴求を想定し、SNSから来店へつなげる導線例。", url: "demos/cafe/" },
   ],
   fitness: [
-    { img: "assets/portfolio/fitness-fv.png", tags: ["パーソナルジム", "体験予約"], name: "LIFT BASE AOYAMA",  desc: "体験予約前の不安を減らすため、料金・設備・トレーナー情報を整理した構成例。" },
-    { img: "assets/demos/fitness-studio.png", tags: ["ジム", "ブランディング"], name: "スタジオ MOVE",        desc: "黒×ライムの世界観で、体験申し込みまでの流れをわかりやすく見せる提案例。" },
+    { img: "assets/portfolio/fitness-fv.png", tags: ["パーソナルジム", "体験予約"], name: "LIFT BASE AOYAMA", desc: "体験予約前の不安を減らすため、料金・設備・トレーナー情報を整理した構成例。", url: "demos/fitness/" },
+    { img: "assets/portfolio/strata-tokyo-fv.png", tags: ["高級ジム", "無料相談"], name: "STRATA TOKYO", desc: "完全個室・完全予約制の高級パーソナルジムを想定し、信頼感と成果訴求を前面に出した構成例。", url: "demos/strata-tokyo/" },
   ],
 };
 
@@ -164,7 +162,6 @@ const Portfolio = () => {
           center
           eyebrow="SAMPLE DESIGNS"
           title={<>業種別・<span className="accent">制作イメージ</span></>}
-          lead="実際の受注実績ではなく、業種ごとの提案例として作成したサンプルです。クリニック / 飲食 / ジムなど、見込み客の心理に合わせた構成を確認できます。"
         />
         <div className="tabs">
           {tabs.map(t => (
@@ -180,21 +177,15 @@ const Portfolio = () => {
         </div>
         <div className="portfolio-grid">
           {items.map((it, i) => (
-            <article key={i} className="portfolio-item">
+            <a key={i} className="portfolio-item" href={it.url} aria-label={`${it.name}のデモページを見る`}>
               <div className="portfolio-img"><img src={it.img} alt={it.name} /></div>
               <div className="portfolio-meta">
                 <div className="tag-row">{it.tags.map((t, j) => <span key={j}>{t}</span>)}</div>
                 <h4>{it.name}</h4>
                 <p>{it.desc}</p>
               </div>
-            </article>
+            </a>
           ))}
-          <article className="portfolio-item" style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: 40, textAlign: "center" }}>
-            <div>
-              <p style={{ margin: 0, fontSize: 14, fontWeight: 900, color: "var(--ink)", marginBottom: 12 }}>このカテゴリで<br/>もっと見たい方は</p>
-              <Button variant="primary" href="#contact">事例集をリクエスト →</Button>
-            </div>
-          </article>
         </div>
       </Container>
     </section>
